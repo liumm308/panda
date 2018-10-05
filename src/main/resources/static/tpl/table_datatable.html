@@ -1,0 +1,289 @@
+<meta charset="utf-8" >
+
+<script>
+	$(document).ready(function() {
+	
+       var table= $('#example').DataTable({
+            "sAjaxSource": "pr/querySysImageSite", 
+            "bServerSide": true,
+            "fnServerData": retrieveData,
+            "bLengthChange": false, 
+            "searching":false,
+            "bSort":false,
+            "showRefresh":true,
+	        "aoColumns" : [ 
+	        {
+                "mData" : "id",
+            },
+	        {
+                "mData" : "type",
+            }, {
+                "mData" : "name",
+            }, {
+                "mData" : "format",
+            }, {
+                "mData" : "created",
+            }, {
+                "mData" : "osType",
+            }, ],
+            "columnDefs": [
+        	{
+          		"targets": [0],
+          		"data": "id",
+          		"render": function(data, type, full) {
+           		return "<label class='i-checks m-b-none'><input type='checkbox' name='' id="+data+"><i></i></label>";
+          	}
+        	}
+      		],
+             "oLanguage" : {
+                "sSearch" : "搜索",
+                "sInfo" : "当前显示  _START_ 到 _END_ 条，共  _TOTAL_  条记录",
+                "oPaginate" : {
+                    "sFirst" : "首页",
+                    "sPrevious" : "上一页",
+                    "sNext" : "下一页",
+                    "sLast" : "末页"
+                }
+            }
+        });
+        
+        $("#searchSysTemplate").click(function(){
+        $('#example').dataTable().fnDestroy(); 
+          $('#example').DataTable({
+            "sAjaxSource": "pr/querySysImageSite", 
+            "bServerSide": true,
+            "fnServerData": retrieveData,
+            "bLengthChange": false, 
+            "searching":false,
+            "bSort":false,
+	        "aoColumns" : [ 
+	        {
+                "mData" : "id",
+            },
+	        {
+                "mData" : "type",
+            }, {
+                "mData" : "name",
+            }, {
+                "mData" : "format",
+            }, {
+                "mData" : "created",
+            }, {
+                "mData" : "osType",
+            }, ],
+             "columnDefs": [
+        	{
+          		"targets": [0],
+          		"data": "id",
+          		"render": function(data, type, full) {
+           		return "<label class='i-checks m-b-none'><input type='checkbox' name='checkbox' id="+data+"><i></i></label>";
+          	}
+        	}
+      		],
+             "oLanguage" : {
+                "sSearch" : "搜索",
+                "sInfo" : "当前显示  _START_ 到 _END_ 条，共  _TOTAL_  条记录",
+                "oPaginate" : {
+                    "sFirst" : "首页",
+                    "sPrevious" : "上一页",
+                    "sNext" : "下一页",
+                    "sLast" : "末页"
+                }
+            }
+        });
+
+         /*  var data = {};
+		  $("form").serializeArray().map(function(x){data[x.name] = x.value;});
+		  alert(JSON.stringify(data));   */
+	    });
+    } );
+    
+  $(document).ready(function() {
+  	     $("#example tbody")
+        .on( "mouseover", "tr", function () {
+            $( this ).addClass( "highlight" );
+        } )
+         .on( "mouseleave", "tr", function () {
+            $( this ).removeClass( "highlight" );
+        } );
+        
+	    $("#example tbody").on( "click", "tr", function () {
+          
+	    	if ( $(this).hasClass('selected') ) {
+            	$(this).removeClass('selected');
+	        }
+	        else {
+	          
+	           /* table.$('tr.selected').removeClass('selected'); */
+	            $(this).addClass('selected');
+	        }
+	       
+	    } );
+	 
+	  /*   $("#button").click( function () {
+	        alert( table.rows(".selected").data().length +" row(s) selected" );
+	    } ); */
+  });
+		
+    function retrieveData( sSource,aoData, fnCallback,oSettings) {
+        var start = oSettings._iDisplayStart;
+         
+        var everyPageNum=oSettings.iDisplayLength ;
+        $.each(aoData, function (n, value) {  
+         	if(value.name=="iDisplayStart"){
+         		start = value.value;
+         	}
+         	if(value.name=="iDisplayLength"){
+         		everyPageNum = value.value;
+         	}
+        	
+        });   
+         var data = {};
+        $("form").serializeArray().map(function(x){data[x.name] = x.value;});
+        data["pageNum"]=start;
+        data["pageSize"]=everyPageNum;
+        $.ajax({
+				url : sSource,//这个就是请求地址对应sAjaxSource
+				data : data,//这个是把datatable的一些基本数据传给后台,比如起始位置,每页显示的行数
+				type : 'post',
+				dataType : 'json',
+				async : false,
+				success : function(result) {
+				    var data = result.pageBean;
+				    
+					fnCallback(data);//把返回的数据传给这个方法就可以了,datatable会自动绑定数据的
+				},
+				error : function(msg) {
+				}
+			});
+		}
+		 
+		    
+  $(document).ready(function() {
+  		$("#example_wrapper .row:first").remove();  	
+  		$("#example tbody").find("input[type='checkbox']").click(function(){
+  			$("#example tbody").find("input[type='checkbox']").attr("checked",false);
+  			$(this).prop('checked',true); 
+  		}); 
+  
+  });	 
+		 
+		 
+</script>
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">产品介绍</h1>
+</div> 
+<div class="wrapper-md">
+  <div class="panel panel-default">
+ <!--  <div class="panel-heading">
+      DataTables
+    </div> -->
+    <!-- <div class="panel-heading">
+     <form name="forma" class="form-horizontal form-validation">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <strong></strong>
+            </div>
+            <div class="panel-body">                    
+              		<fieldset>
+                        <legend>配置数据源</legend>
+                       <div class="form-group">
+                          <label class="col-sm-1 control-label" for="ds_host">主机名</label>
+                          <div class="col-sm-2">
+                             <input class="form-control" id="ds_host" name="ds_host" type="text" placeholder="192.168.1.161"/>
+                          </div>
+                          <label class="col-sm-1 control-label" for="ds_name">数据库名</label>
+                          <div class="col-sm-2">
+                             <input class="form-control" id="ds_name" name="ds_name"  type="text" placeholder="msh"/>
+                          </div>
+                       </div>
+                       <div class="form-group">
+                          <label class="col-sm-2 control-label" for="ds_username">用户名</label>
+                          <div class="col-sm-4">
+                             <input class="form-control" id="ds_username" name="ds_username" type="text" placeholder="root"/>
+                          </div>
+                          <label class="col-sm-2 control-label" for="ds_password">密码</label>
+                          <div class="col-sm-4">
+                             <input class="form-control" id="ds_password" name="ds_password" type="password" placeholder="123456"/>
+                          </div>
+                       </div>
+                    </fieldset>  
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Black-list</label>
+                <div class="col-sm-9">
+                  <input type="email" name="email" class="form-control" placeholder="input 'bad@domain.com'" ng-model="g.j" ui-validate="{blacklist : 'notBlackListed($value)' }" required>
+                  <span ng-show='forma.email.$error.blacklist'>This e-mail is black-listed!</span>
+                </div>
+              </div>
+             
+            </div>
+           
+          </div>
+        </form>
+    </div>
+    </div> -->
+  <!--    <button class="btn m-b-xs w-xs btn-success" data-toggle="modal" 
+   data-target="#myModal">
+   演示模态框
+</button> -->
+    <div class="row wrapper">
+      <div class="col-sm-7 m-b-xs" ng-controller="ModalDemoCtrl">
+      
+       	 <script type="text/ng-template" id="myModalContent.html">
+            <div ng-include="'tpl/modal.html'"></div>
+          </script>
+          <div class="panel-body">
+            <button class="btn btn-dark" ng-click="open('sm')">上传</button>
+            <button class="btn btn-dark" ng-click="open('sm')">分发</button>
+            <button class="btn btn-dark" ng-click="open()">删除</button>
+          </div>
+         <!-- <button class="btn btn-success" ng-click="open()">Open me!</button>
+         <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
+         <button class="btn btn-default" ng-click="open('sm')">Small modal</button> -->
+        <!-- <select class="input-sm form-control w-sm inline v-middle">
+          <option value="0">Bulk action</option>
+          <option value="1">Delete selected</option>
+          <option value="2">Bulk edit</option>
+          <option value="3">Export</option>
+        </select>
+        <button class="btn btn-sm btn-default">Apply</button> -->                
+      </div>
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-3">
+       <form name="forma" class="form-horizontal form-validation">
+        <div class="input-group">
+        
+          <input type="text" class="input-sm form-control" name="name" placeholder="Search">
+          <span class="input-group-btn">
+            <button id="searchSysTemplate" class="btn btn-sm btn-default" type="button">Go!</button>
+          </span>
+          
+        </div>
+        </form>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table ui-jq="dataTable" id="example" class="table table-striped m-b-none">
+        <thead>
+          <tr>
+           <th style="width:20px;">
+              <label class="i-checks m-b-none">
+                <!-- <input type="checkbox"><i></i></input> -->
+              </label>
+            </th>
+            <th  style="width:25%">类型</th>
+            <th  style="width:25%">名称</th>
+            <th  style="width:15%">格式</th>
+            <th  style="width:15%">创建时间</th>
+            <th  style="width:15%">操作系统类型</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+ 
+</div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全屏演示</title>
+</head>
+<body>
+<div id="mario-video" class="container " ng-controller="FullScreenController" >
+    <div class="row" data-ng-init="load()">
+        <section class="main-content">
+            <p>
+                <button id="video-fullscreen" ng-click="fullFn(0)">全屏</button>
+                <button id="cancel-fullscreen" ng-click="fullFn(1)">退出</button>
+            </p>
+        </section>
+        <div class="col-sm-12" >
+            <ul id="cbp-bislideshow" class="cbp-bislideshow">
+                <li ><chart-map option="option" ></chart-map></li>
+                <li ><chart-line option="chartLineOption"></chart-line></li>
+                <li ><chart-bar option="option2" ></chart-bar></li>
+                <li ><chart-pie option="option1" ></chart-pie></li>
+            </ul>
+            <div id="cbp-bicontrols" class="cbp-bicontrols">
+                <span class="cbp-biprev"></span>
+                <span class="cbp-bipause"></span>
+                <span class="cbp-binext"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<meta charset="utf-8">
+<div class="hbox hbox-auto-xs bg-black "
+	ng-init="
+  app.settings.asideFixed = true;
+  app.settings.asideDock = false;
+  app.settings.container = false;
+  app.hideAside = false;
+  app.hideFooter = true;">
+	<div class="container" ng-controller="echartsCtrl">
+		<ol class="breadcrumb">
+			<li>{{nav.instancesTitle}}</li>
+			<li>{{nav.instancesTitle}}</li>
+		</ol>
+		<div class="page-intro">
+			<p class="lead">{{nav.instancesContent}}</p>
+		</div>
+		<div class="pane">
+			<div id="main" style="width: 1000px;height:600px;"></div>
+		</div>
+	</div>
+</div>

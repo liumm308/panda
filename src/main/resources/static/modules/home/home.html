@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<style>
+    .top-10{
+        background-image: url("img/publicIcon/top10.png");
+        width: 25px;
+        height: 25px;
+        display: block;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        float: left;
+        margin: 7px 10px;
+    }
+    .more{
+        background-image: url("img/publicIcon/more.png");
+        width: 20px;
+        height: 20px;
+        display: block;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        margin: 6px auto;
+    }
+    .handle-bar{
+        background-image: url("img/publicIcon/handleBar.png");
+        width: 20px;
+        height: 20px;
+        display: block;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        margin: 9px auto;
+    }
+</style>
+<body>
+<div class="pane" style="padding: 11px;">
+    <div class="home-panel">
+        <div class="row m-0">
+            <div class="col-sm-6 business-item">
+                <div class="item-bg">
+                    <div class="item-title clearfix">
+                        <div class="title-name clearfix">
+                            <p>我的待办</p>
+                            <i class="top-10"></i>
+                        </div>
+                    </div>
+                    <div class="item-content">
+                        <div class="table-title">
+                            <ul class="clearfix">
+                                <li>名称</li>
+                                <li>类型</li>
+                                <li>状态</li>
+                                <li>办理</li>
+                            </ul>
+                        </div>
+                        <div class="table-content">
+                            <div class="table-item" ng-repeat="item in myUndoList" ng-if="myUndoList.length >0 && noneUndoData == false">
+                                <ul class="clearfix">
+                                    <li>{{item.serverName}}</li>
+                                    <li>{{item.serverType | workOrderType}}</li>
+                                    <li>{{item.status | processStatus}}</li>
+                                    <li ng-click="toMyUndo(item)"><i class="handle-bar"></i></li>
+                                </ul>
+                            </div>
+                            <div class="table-item" ng-if="myUndoList.length ==0 || noneUndoData">
+                                <p class="none-data">暂无待办信息</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-6 business-item">
+                <div class="item-bg">
+                    <div class="item-title clearfix">
+                        <div class="title-name clearfix">
+                            <p>我的申请</p>
+                            <i class="top-10"></i>
+                        </div>
+                    </div>
+                    <div class="item-content">
+                        <div class="table-title">
+                            <ul class="clearfix">
+                                <li style="width: 33.333%">名称</li>
+                                <li style="width: 33.333%">类型</li>
+                                <li style="width: 33.333%">状态</li>
+                                <!--<li>办理</li>-->
+                            </ul>
+                        </div>
+                        <div class="table-content">
+                            <div class="table-item" ng-repeat="item in myCreateList" ng-if="myCreateList.length >0 && noneCreateData == false">
+                                <ul class="clearfix">
+                                    <li style="width: 33.333%">{{item.name}}</li>
+                                    <li style="width: 33.333%">{{item.type | workOrderType}}</li>
+                                    <li style="width: 33.333%">{{item.status | processStatus}}</li>
+                                    <!--<li ng-click="toMyCreate(item)"><i class="handle-bar"></i></li>-->
+                                </ul>
+                            </div>
+                            <div class="table-item" ng-if="myCreateList.length ==0 || noneCreateData">
+                                <p class="none-data">暂无申请信息</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 business-item">
+                <div class="item-bg">
+                    <div class="item-title">
+                        <p>资源统计</p>
+                    </div>
+                    <div class="item-content">
+                        <div class="charts-item" ng-if="!noneResource">
+                            <div id="ResourceCharts" style="width:100%;height:385px"></div>
+                        </div>
+                        <div class="charts-item" ng-if="noneResource">
+                            <p class="none-data">暂无资源统计信息</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 business-item">
+                <div class="item-bg">
+                    <div class="item-title">
+                        <p>告警统计</p>
+                    </div>
+                    <div class="item-content">
+                        <div class="charts-item" ng-if="!noneWarming">
+                            <div id="WarmCharts" style="width:100%;height:385px"></div>
+                        </div>
+                        <div class="charts-item" ng-if="noneWarming">
+                            <p class="none-data">暂无告警统计信息</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+.ngTip {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 99999;
+    text-align: center;
+    font-size: 17px;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: 0;
+}

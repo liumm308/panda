@@ -1,0 +1,109 @@
+<meta charset="utf-8">
+<div class="hero-unit">
+	<div id="box">
+		<div id="topbar">
+			<span>工作流</span> <img src="flowchart/images/help.png" alt="帮助"
+				title="帮助" id="showHelp" /> <img src="flowchart/images/delete.png"
+				alt="删除数据" title="删除数据" onclick="clearAll();" /> <img
+				src="flowchart/images/open.png" alt="打开数据" title="打开数据"
+				onclick="openFile();" /> <img src="flowchart/images/save.png"
+				alt="保存数据" title="保存数据" onclick="save();">
+			<img src="flowchart/images/export.png" alt="导出" title="导出" onclick="savetoimage();">
+			&lt;!&ndash;<button onclick="big();">整体放大</button>&ndash;&gt;
+			&lt;!&ndash;<button onclick="small();">整体缩小</button>&ndash;&gt;
+		</div>
+		<div id="tools_cp">
+			<div id="obj_1">
+				<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+                    <image width="70" height="60"
+						xlink:href="flowchart/images/5.png"></image>
+                </svg>
+			</div>
+			<div id="obj_2">
+				<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+                    <image width="70" height="60"
+						xlink:href="flowchart/images/6.png"></image>
+                </svg>
+			</div>
+			<div id="obj_3">
+				<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+                    <image width="70" height="60"
+						xlink:href="flowchart/images/7.png"></image>
+                </svg>
+			</div>
+			<div id="obj_4">
+				<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+                    <image width="70" height="60"
+						xlink:href="flowchart/images/8.png"></image>
+                </svg>
+			</div>
+		</div>
+		<div id="canvasBox">
+			<canvas id="myCanvas" ondrop="drop(event)"
+				ondragover="allowDrop(event)">
+                your browser does not support the canvas tag
+            </canvas>
+		</div>
+		<div id="pcp">
+			<p>
+				<label>文字</label><input id="text" value="" placeholder="text"
+					onchange="setText(this.value);" />
+			</p>
+
+			<p>
+				<label>x轴</label><input id="left" value="" placeholder="left"
+					onchange="setLeft(this.value);" />
+			</p>
+
+			<p>
+				<label>y轴</label><input id="top" value="" placeholder="top"
+					onchange="setTop(this.value);" />
+			</p>
+
+			<p>
+				<label>宽度</label><input id="width" value="" placeholder="width"
+					onchange="setWidth(this.value);" />
+			</p>
+
+			<p>
+				<label>高度</label><input id="height" value="" placeholder="height"
+					onchange="setHeight(this.value);" />
+			</p>
+		</div>
+		<!--<div id="footer"></div>-->
+		<div id="help">
+			<p>拖拽左侧工具栏到画布，生成相应的图形。</p>
+
+			<p>鼠标位于图形上，鼠标呈现拖拽状态时，可拖拽图形，图形移动。</p>
+
+			<p>鼠标位于图形上的节点，拖拽节点，图形拉伸。</p>
+
+			<p>鼠标位于图形上，单击一次，按delete键删除图形。</p>
+
+			<p>鼠标位于图形上，双击，出现编辑框，输入文字，用来更改图形的文字。</p>
+
+			<p>
+				<button id="closeHelp">关闭帮助</button>
+			</p>
+		</div>
+		<div id="selectFiles">
+			<div>
+				<div id="setTitleCP">
+					<input type="text" id="title" />
+					<button id="btnTitle">确定</button>
+				</div>
+			</div>
+		</div>
+		<script src="flowchart/js/codetyphon.js"></script>
+		<script src="flowchart/js/tools.js"></script>
+		<script src="flowchart/js/tools2.js"></script>
+		<script src="flowchart/js/tools3.js"></script>
+		<script src="flowchart/js/tools4.js"></script>
+		<script src="flowchart/js/line.js"></script>
+		<script src="flowchart/js/functions.js"></script>
+		<script src="flowchart/js/event.js"></script>
+		<script src="flowchart/js/event_mouse_up.js"></script>
+		<script src="flowchart/js/event_mouse_move.js"></script>
+		<script src="flowchart/js/init.js"></script>
+	</div>
+</div>

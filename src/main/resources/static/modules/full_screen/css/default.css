@@ -1,0 +1,161 @@
+/* General Demo Style */
+@font-face {
+	font-family: 'fontawesome';
+	src:url('../fonts/fontawesome.eot');
+	src:url('../fonts/fontawesome.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/fontawesome.svg#fontawesome') format('svg'),
+		url('../fonts/fontawesome.woff') format('woff'),
+		url('../fonts/fontawesome.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*body, html { width: 100%;height:100%;  	padding: 0; margin: 0;}*/
+
+/*hr{*/
+	/*border-color: #ccc;*/
+/*}*/
+/*!* Reset *!*/
+/**,*/
+/**:after,*/
+/**:before {*/
+	/*-webkit-box-sizing: border-box;*/
+	/*-moz-box-sizing: border-box;*/
+	/*box-sizing: border-box;*/
+/*}*/
+
+/*body {*/
+    /*font-family: 'Lato', Calibri, Arial, sans-serif;*/
+    /*color: #47a3da;*/
+	/*background:#ccc;*/
+	/*position:relative;*/
+/*}*/
+
+/* Fullscreen */
+/*html:-moz-full-screen {*/
+	/*background: red;*/
+/*}*/
+
+/*html:-webkit-full-screen {*/
+	/*background: red;*/
+/*}*/
+
+/*html:-ms-fullscreen {*/
+	/*background: red;*/
+	/*width: 100%; !* needed to center contents in IE *!*/
+/*}*/
+
+/*html:fullscreen {*/
+	/*background: #000;*/
+/*}*/
+
+#mario-video{
+	background: #fff;
+	border: 1px solid #ccc;
+	padding: 20px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-moz-box-shadow: 1px 1px 10px #000;
+	-webkit-box-shadow: 1px 1px 5px #000;
+	box-shadow: 1px 1px 10px #000;
+	position: relative;
+	left:0;
+	top:0;
+	margin-top:50px;
+	width: 600px;
+	height: 600px;
+}
+
+#mario-video:-webkit-full-screen {
+	width: 100%;
+	height: 100%;
+	left:0;
+	top:0;
+	margin: 0;
+	background-color:#fff;
+	background-size: contain;
+}
+#mario-video:-moz-full-screen {
+	width: 100%;
+	height: 100%;
+	left:0;
+	top:0;
+	margin: 0;
+	background-color:#fff;
+	background-size: contain;
+}
+#mario-video:-ms-fullscreen {
+	width: 100%;
+	height: 100%;
+	left:0;
+	top:0;
+	margin: 0;
+	background-color:#fff;
+	background-size: contain;
+}
+#mario-video:fullscreen {
+	width: 100%;
+	height: 100%;
+	left:0;
+	top:0;
+	margin: 0;
+	background-color:#fff;
+	background-size: contain;
+}
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	*zoom: 1; /*IE/7/6*/
+}
+
+#mario-video a {
+	color: #f0f0f0;
+	text-decoration: none;
+}
+
+#mario-video a:hover {
+	color: #000;
+}
+
+
+
+#mario-video .main-content p {
+	float:right;
+	margin-right: 10px;
+}
+#mario-video .icon-drop:before,
+#mario-video .icon-arrow-left:before {
+	font-family: 'fontawesome';
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 2;
+	text-align: center;
+	color: #47a3da;
+	-webkit-font-smoothing: antialiased;
+	text-indent: 8000px;
+	padding-left: 8px;
+}
+
+
+
+#mario-video .icon-drop:before {
+	content: "\e000";
+}
+
+#mario-video .icon-arrow-left:before {
+	content: "\f060";
+}
+
