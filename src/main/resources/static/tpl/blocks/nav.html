@@ -3,113 +3,42 @@
     <span style="font-size: 20px;font-weight: bold;color: #fff; word-spacing:5px;letter-spacing: 3px;"></span>
 </div>
 <ul class="nav ul-li" ng-controller="navCtrl">
-    <!--<li ui-sref-active="active" ng-repeat="item in userMenu" class="nav-first_"  ng-if="item.permission=='parent'">
-		<a ng-href="{{item.href}}" target="{{item.target}}">
-			<i class="{{item.outIcon}}"></i>
-			<span class="font-bold">{{item.name}}</span>
-		</a>
-	</li>
-	<li  ng-repeat="items in userMenu " ng-if="items.permission=='node:upper'">
-		<a href class="auto">
-			<span class="pull-right">
-				<i class="fa fa-fw fa-angle-right text"></i>
-				<i class="fa fa-fw fa-angle-down text-active"></i>
-			</span>
-			<i class="{{items.outIcon}}"></i>
-			<span class="font-bold">{{items.name}}</span>
-		</a>
-		<ul class="nav nav-sub dk"  ng-if="items.nodes.length>0">
-			<li class="nav-sub-header">
-				<a href>
-					<span>{{items.name}}</span>
-				</a>
-			</li>
-			 <li ui-sref-active="active" ng-repeat="item in items.nodes">
-                <a ng-href="{{item.href}}" target="{{item.target}}">
-                    <span>{{item.name}}</span>
-                </a>
-            </li>
-		</ul>
-	</li>
-	 <li ui-sref-active="active" ng-repeat="item in userMenu"  ng-if="item.permission=='only:middle'">
-		<a ng-href="{{item.href}}" target="{{item.target}}">
-			<i class="{{item.outIcon}}"></i>
-			<span class="font-bold">{{item.name}}</span>
-		</a>
-	</li>
-    <li  ng-repeat="items in userMenu" ng-if="items.permission=='node:middle'">
-		<a href class="auto">
-			<span class="pull-right">
-				<i class="fa fa-fw fa-angle-right text"></i>
-				<i class="fa fa-fw fa-angle-down text-active"></i>
-			</span>
-			<i class="{{items.outIcon}}"></i>
-			<span class="font-bold">{{items.name}}</span>
-		</a>
-		<ul class="nav nav-sub dk"  ng-if="items.nodes.length>0">
-			<li class="nav-sub-header">
-				<a href>
-					<span>{{items.name}}</span>
-				</a>
-			</li>
-			 <li ui-sref-active="active" ng-repeat="item in items.nodes track by $index">
-                <a ng-href="{{item.href}}" target="{{item.target}}">
-                    <span>{{item.name}}</span>
-                </a>
-            </li>
-		</ul>
-	</li>
-	<li ui-sref-active="active" ng-repeat="item in userMenu"  ng-if="item.permission=='only:lower'">
-		<a ng-href="{{item.href}}" target="{{item.target}}">
-			<i class="{{item.outIcon}}"></i>
-			<span class="font-bold">{{item.name}}</span>
-		</a>
-	</li>
-	  <li  ng-repeat="items in userMenu" ng-if="items.permission=='node:lower'">
-		<a href class="auto">
-			<span class="pull-right">
-				<i class="fa fa-fw fa-angle-right text"></i>
-				<i class="fa fa-fw fa-angle-down text-active"></i>
-			</span>
-			<i class="{{items.outIcon}}"></i>
-			<span class="font-bold">{{items.name}}</span>
-		</a>
-		<ul class="nav nav-sub dk"  ng-if="items.nodes.length>0">
-			<li class="nav-sub-header">
-				<a href>
-					<span>{{items.name}}</span>
-				</a>
-			</li>
-			 <li ui-sref-active="active" ng-repeat="item in items.nodes">
-                <a ng-href="{{item.href}}" target="{{item.target}}">
-                    <span>{{item.name}}</span>
-                </a>
-            </li>
-		</ul>
-	</li>-->
+    <li ui-sref-active="active">
+        <a ui-sref="app.ipManagement">
+            <i class="iconfont">&#xe605;</i>
+            <span class="font-bold">首页</span>
+        </a>
+    </li>
     <li>
         <a href class="auto">
 			<span class="pull-right">
-				<i class="iconfont text">&#xe604;</i>
-				<i class="iconfont text-active">&#xe612;</i>
+				<i class="iconfont text">&#xe606;</i>
+				<i class="iconfont text-active">&#xe87e;</i>
 			</span>
-            <i class="iconfont">&#xe62a;</i>
+            <i class="iconfont">&#xe69c;</i>
             <span class="font-bold">用户管理</span>
         </a>
         <ul class="nav nav-sub dk">
-            <li ui-sref-active="active">
-                <a ui-sref="app.tenantInformation">
-                    <span>租户信息</span>
-                </a>
-            </li>
             <li ui-sref-active="active">
                 <a ui-sref="app.userInformation">
                     <span>用户信息</span>
                 </a>
             </li>
+        </ul>
+    </li>
+    <li>
+        <a href class="auto">
+			<span class="pull-right">
+				<i class="iconfont text">&#xe606;</i>
+				<i class="iconfont text-active">&#xe87e;</i>
+			</span>
+            <i class="iconfont">&#xe8de;</i>
+            <span class="font-bold">读者管理</span>
+        </a>
+        <ul class="nav nav-sub dk">
             <li ui-sref-active="active">
-                <a ui-sref="app.websiteFiling">
-                    <span>网站备案号</span>
+                <a ui-sref="app.userInformation">
+                    <span>读者信息</span>
                 </a>
             </li>
         </ul>
@@ -117,26 +46,16 @@
     <li>
         <a href class="auto">
 			<span class="pull-right">
-				<i class="iconfont text">&#xe604;</i>
-				<i class="iconfont text-active">&#xe612;</i>
+				<i class="iconfont text">&#xe606;</i>
+				<i class="iconfont text-active">&#xe87e;</i>
 			</span>
-            <i class="iconfont">&#xe631;</i>
-            <span class="font-bold">资源管理</span>
+            <i class="iconfont">&#xe650;</i>
+            <span class="font-bold">图书管理</span>
         </a>
         <ul class="nav nav-sub dk">
             <li ui-sref-active="active">
                 <a ui-sref="app.ui-tenantl">
-                    <span>租户配额</span>
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="app.ui-userquota">
-                    <span>用户配额</span>
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="app.ui-moveResource">
-                    <span>资源迁移</span>
+                    <span>图书信息</span>
                 </a>
             </li>
         </ul>
@@ -144,53 +63,23 @@
     <li>
         <a href class="auto">
 			<span class="pull-right">
-				<i class="iconfont text">&#xe604;</i>
-				<i class="iconfont text-active">&#xe612;</i>
+				<i class="iconfont text">&#xe606;</i>
+				<i class="iconfont text-active">&#xe87e;</i>
 			</span>
-            <i class="iconfont">&#xe793;</i>
-            <span class="font-bold">产品管理</span>
-        </a>
-        <ul class="nav nav-sub dk">
-            <li ui-sref-active="active">
-                <a ui-sref="app.mainProduct">
-                    <span>主产品</span>
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="app.subProduct">
-                    <span>子产品</span>
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="app.subProductAudit">
-                    <span>子产品审核</span>
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="app.pricePolicy">
-                    <span>价格策略</span>
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="app.attributeManagement">
-                    <span>属性管理</span>
-                </a>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <a href class="auto">
-			<span class="pull-right">
-				<i class="iconfont text">&#xe604;</i>
-				<i class="iconfont text-active">&#xe612;</i>
-			</span>
-            <i class="iconfont">&#xe603;</i>
-            <span class="font-bold">财务管理</span>
+            <i class="iconfont">&#xe60b;</i>
+            <span class="font-bold">权限管理</span>
         </a>
         <ul class="nav nav-sub dk">
             <li ui-sref-active="active">
                 <a ui-sref="app.priceManagement">
-                    <span>价格管理</span>
+                    <span>读者权限</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.priceManagement">
+                    <span>图书权限</span>
                 </a>
             </li>
         </ul>
@@ -199,85 +88,40 @@
     <li>
         <a href class="auto">
 			<span class="pull-right">
-				<i class="iconfont text">&#xe604;</i>
-				<i class="iconfont text-active">&#xe612;</i>
+				<i class="iconfont text">&#xe606;</i>
+				<i class="iconfont text-active">&#xe87e;</i>
 			</span>
-            <i class="iconfont">&#xe647;</i>
-            <span class="font-bold">报表管理</span>
+            <i class="iconfont">&#xe529;</i>
+            <span class="font-bold">业务管理</span>
         </a>
         <ul class="nav nav-sub dk">
             <li ui-sref-active="active">
                 <a ui-sref="app.userResourceStatistics">
-                    <span>资源统计报表</span>
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="app.userOrderStatistics">
-                    <span>订单统计报表</span>
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="app.userWorkbillsStatistics">
-                    <span>工单统计报表</span>
-                </a>
-            </li>
-            <li ui-sref-active="active">
-                <a ui-sref="app.userNewResourceStatistics">
-                    <span>资源统计信息</span>
+                    <span>业务统计</span>
                 </a>
             </li>
         </ul>
     </li>
-
     <li>
         <a href class="auto">
 			<span class="pull-right">
-				<i class="iconfont text">&#xe604;</i>
-				<i class="iconfont text-active">&#xe612;</i>
+				<i class="iconfont text">&#xe606;</i>
+				<i class="iconfont text-active">&#xe87e;</i>
 			</span>
-            <i class="iconfont">&#xe68f;</i>
-            <span class="font-bold">统计分析</span>
+            <i class="iconfont">&#xe6a7;</i>
+            <span class="font-bold">借还系统</span>
         </a>
         <ul class="nav nav-sub dk">
             <li ui-sref-active="active">
-                <a ui-sref="app.tenantResourceStatisticsReport">
-                    <span>租户资源统计报表</span>
+                <a ui-sref="app.mainProduct">
+                    <span>借阅管理</span>
                 </a>
             </li>
             <li ui-sref-active="active">
-                <a ui-sref="app.tenantEarningsReport">
-                    <span>租户收入报表</span>
+                <a ui-sref="app.attributeManagement">
+                    <span>归还管理</span>
                 </a>
             </li>
-            <li ui-sref-active="active">
-                <a ui-sref="app.quotaStatisticsReport">
-                    <span>配额统计报表</span>
-                </a>
-            </li>
-
         </ul>
-    </li>
-
-    <li ui-sref-active="active">
-        <a ui-sref="app.ipManagement">
-            <i class="iconfont">&#xe725;</i>
-            <span class="font-bold">IP管理</span>
-        </a>
-    </li>
-    <li ui-sref-active="active">
-        <a ui-sref="app.resourceManagement">
-            <i class="iconfont">&#xe631;</i>
-            <span class="font-bold">资源管理</span>
-        </a>
-    </li>
-    <li>
-        <a class="auto"  ui-sref="app.mirrorManagement">
-            <span class="pull-right text-muted">
-               <i class="iconfont text">&#xe604;</i>
-				<i class="iconfont text-active">&#xe612;</i>
-			</span>
-            <i class="fa fa-files-o"></i>
-            <span class="font-bold">镜像管理</span>
-        </a>
     </li>
 </ul>

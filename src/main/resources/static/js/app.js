@@ -33,6 +33,7 @@ angular.module('app', [
     'CacheStorage',
     'FakeHttpBackend',
     'ngMessages',
+    //工单
     'ui-sreach',
     'sreach-button',
     'ui-laydate',
@@ -60,5 +61,5 @@ angular.module('app', [
     'tm.pagination',
     'skyform-button',
     'uiSwitch',
-    'ngFileUpload'
+    'ngFileUpload',
 ]);

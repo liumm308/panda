@@ -1,34 +1,5 @@
 'use strict';
-//工单类型 type  net:网络工单  maintain:平台维护
-app.filter("workOrderType", function () {
-    return function (input) {
-        if (input == "apply") {
-            return input.replace("apply",'资源申请');
-        } else if(input == "change"){
-            return input.replace("change",'资源变更');
-        } else if(input == "net"){
-            return input.replace("net",'网络工单');
-        } else if(input == "maintain"){
-            return input.replace("maintain",'平台维护');
-        } else if(input == "item"){
-            return input.replace("item",'项目申请');
-        } else if(input == "web项目"){
-            return input.replace("web项目",'项目申请');
-        }
-    }
-});
-//流程状态 status 1:起草 2：审批中 3：结束
-app.filter('processStatus',function (){
-    return function(input){
-        if ( input == "1") {
-            return input.replace("1","起草");
-        } else if(input == "2"){
-            return input.replace("2","审批中");
-        }else if(input == "3"){
-            return input.replace("3","结束");
-        }
-    };
-});
+
 app.controller('homeCtrl',homeCtrl);
 homeCtrl.$inject = ['$scope','$modal','$log','$timeout','$state','i18nService','service.RES','CacheService','ngDialog','$stateParams'];
 function homeCtrl($scope,$modal,$log,$timeout,$state,i18nService,serviceRES,CacheService,ngDialog,$stateParams){

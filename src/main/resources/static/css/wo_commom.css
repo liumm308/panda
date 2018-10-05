@@ -7,7 +7,8 @@
 	font-family:'微软雅黑';
 }
 html, body{
-	background-image:url("../img/index1_bg.jpg");
+	/*background-image:url("../img/index1_bg.jpg");*/
+	background-image:url(../img/bg-canvas.jpg);
 	background-position: 0px 0px;
 	width: 100%;
 	height:auto;
@@ -29,7 +30,8 @@ a:hover{
 .fix:after{display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;}
 /*主题色*/
 .app-header-fixed .app-header{
-	background:url(../img/index1_bg.jpg);
+	/*background:url(../img/index1_bg.jpg);*/
+	background:url(../img/bg-canvas.jpg);
 	background-attachment: fixed;
 	background-size: cover;
 	background-position: 0px 0;
