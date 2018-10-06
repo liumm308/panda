@@ -1,58 +1,10 @@
 'use strict';
 
 app.controller('homeCtrl',homeCtrl);
-homeCtrl.$inject = ['$scope','$modal','$log','$timeout','$state','i18nService','service.RES','CacheService','ngDialog','$stateParams'];
-function homeCtrl($scope,$modal,$log,$timeout,$state,i18nService,serviceRES,CacheService,ngDialog,$stateParams){
+    homeCtrl.$inject = ['$scope','$modal','$log','$timeout','$state','i18nService','service.RES','CacheService','ngDialog','$stateParams'];
+    function homeCtrl($scope,$modal,$log,$timeout,$state,i18nService,serviceRES,CacheService,ngDialog,$stateParams){
 
     i18nService.setCurrentLang("zh-cn");
-
-    /**
-     * 获取用户信息
-     * @author duweiwei
-     * @method getUserInfo
-     * @param  noParam
-     * @return
-     * @date   2018-4-28
-     */
-    $.post('./getUserInfo')
-        .then(function (result) {
-            CacheService.setObject('loginInfo',result);
-            getMyUndo();
-            getMyCreate();
-
-        });
-
-    /**
-     * 获取所有云平台所有云厂商
-     * @author duweiwei
-     * @method queryCloudFactory
-     * @param  noParam
-     * @return
-     * @date   2018-4-28
-     */
-    var cloudsName = [];
-    var queryCloudFactory = function(){
-        var params ={
-            baseInfo:{
-                pageNum:0,
-                pageSize:0
-            },
-            method:"cloudEnvironmentQuery"
-        };
-        $.post('./cloudOssCmdbMethod',{"jsonStr":JSON.stringify(params)})
-            .then(function(result){
-                //var result = JSON.parse(result);
-                if(result.code == 200){
-                    $scope.cloudFactoryList = result.retObj.list;
-                    $scope.cloudFactoryList.forEach(function (arr,index,val) {
-                        cloudsName.push(angular.copy($scope.cloudFactoryList[index].cloudName));
-
-                    })
-                }
-            });
-
-    };
-    queryCloudFactory();
 
 
     //我的待办

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态列表</title>
+</head>
+
+<body>
+<div class="pane" style="padding: 11px;">
+    <div class="panel-default">
+        <div class="row _swithch__board_heard_ search-box clear" >
+            <form id="searchForm" name="searchForm" class="ng-pristine ng-valid">
+                <div class="col-md-12">
+                    <div class="form-group common-group">
+                        <label  class="label-name">用户信息</label>
+                        <input type="text" class="form-control"  ng-model="orderName">
+                    </div>
+                    <div class="form-group common-group">
+                        <label class="label-name"></label>
+                        <button class="operate-btn on" ng-click="query(1,10)">
+                            <i class="iconfont">&#xe65f;</i>
+                            <span class="btn-name">查询</span>
+                        </button>
+                        <button class="operate-btn on" ng-click="reset()">
+                            <i class="iconfont">&#xe61d;</i>
+                            <span class="btn-name">重置</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="content-list">
+            <div class="row no-padder m-n">
+                <div class="col-sm-12 m-t-xs m-b-xs no-padder" >
+                    <div class="search-operate-btn">
+                        <button class="operate-btn on" ng-click="query(1,10)">
+                            <i class="iconfont">&#xe632;</i>
+                            <span class="btn-name">刷新</span>
+                        </button>
+                        <button class="operate-btn on" ng-click="apply()">
+                            <i class="iconfont">&#xe609;</i>
+                            <span class="btn-name">新建</span>
+                        </button>
+                        <button class="operate-btn on" ng-click="modify()">
+                            <i class="iconfont">&#xe65d;</i>
+                            <span class="btn-name">修改</span>
+                        </button>
+                        <button class="operate-btn on" ng-click="change()">
+                            <i class="iconfont">&#xe613;</i>
+                            <span class="btn-name">删除</span>
+                        </button>
+                        <button class="operate-btn on" ng-click="detail()">
+                            <i class="iconfont">&#xe7db;</i>
+                            <span class="btn-name">详情</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-content">
+                <grid arr="dataArr" col-arr="gridOptions" call-fn="callFn" page-fn="pageFn"></grid>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
