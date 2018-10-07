@@ -7,10 +7,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import javax.ws.rs.FormParam;
 
-
+@RestController
 public class BooksManagementSystemController {
 
     private static Log logger = LogFactory.getLog(BooksManagementSystemController.class);
@@ -31,7 +32,7 @@ public class BooksManagementSystemController {
             logger.info("userManagement request: " + JsonPluginsUtil.beanToJson(jsonStr));
 
             JSONObject jsonObject = JSONObject.parseObject(jsonStr);
-            result = remoteTemplate.remote(jsonObject.getString("method"), JSONObject.class);
+            result = remoteTemplate.remote(jsonStr,jsonObject.getString("method"), JSONObject.class);
         }catch (Exception e){
 
             logger.error("用户管理失败！！！", e);

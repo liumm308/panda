@@ -15,22 +15,15 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope','ngDialog','i18n
             field: "userName",
             displayName: "用户名称"
         }, {
-            field: "userType",
-
+            field: "type",
             displayName: "用户类型"
         }, {
-            field: "password",
-
+            field: "userPassword",
             displayName: "用户密码"
         }, {
             field: "company",
-
             displayName: "部门"
         }, {
-            field: "department",
-
-            displayName: "单位"
-        },{
             field: "createTime",
             displayName: "创建时间",
             cellTemplate: '<div class="ui-grid-cell-contents ng-binding ng-scope"' + ' title="{{row.entity.createTime}}">{{row.entity.createTime |date:"yyyy-MM-dd HH:mm:ss"}}</div>'
@@ -42,26 +35,6 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope','ngDialog','i18n
 
         $scope.callFn = function (item, flag, e) {
             $scope.rowItem = item;
-            $timeout(function () {
-                var searchBtnList = document.getElementsByClassName('search-operate-btn')[0].getElementsByTagName('button');
-                for(var i=0;i<searchBtnList.length;i++){
-                    searchBtnList[i].removeAttribute("disabled");
-                    if(item.status == "1" ){    //流程状态 status 1:起草 2：审批中 3：结束
-                        if(searchBtnList[i].innerText.trim() == '查看审批详情' ||searchBtnList[i].innerText.trim() == '查看流程'||searchBtnList[i].innerText.trim() == '变更'
-                            ||searchBtnList[i].innerText.trim() == '发送邮件&短信'||searchBtnList[i].innerText.trim() == '验收'){
-                            searchBtnList[i].setAttribute("disabled","disabled");
-                        }
-                    }else if(item.status == "2") {
-                        if (searchBtnList[i].innerText.trim() == '发布' || searchBtnList[i].innerText.trim() == '修改' || searchBtnList[i].innerText.trim() == '变更') {
-                            searchBtnList[i].setAttribute("disabled", "disabled");
-                        }
-                    }else if(item.status =="3")
-                        if(searchBtnList[i].innerText.trim() == '修改' ||searchBtnList[i].innerText.trim() == '发送邮件&短信'||searchBtnList[i].innerText.trim() == '发布'||searchBtnList[i].innerText.trim() == '验收'){
-                            searchBtnList[i].setAttribute("disabled","disabled");
-                        }
-                }
-            },1000);
-
         };
 
         $scope.pageFn = function (newPage, pageSize) {
@@ -75,11 +48,11 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope','ngDialog','i18n
                 baseInfo: {
                     "pageSize": pageSize ? pageSize : 10,
                     "pageNum": pageNum ? pageNum : 1,
-                    "orderName": $scope.orderName
+                    "id":1
                 },
-                method: "resourceOrderQuery"
+                method: "queryUser"
             };
-            $.post('./cloudPmMethod', {"jsonStr": JSON.stringify(params)})
+            $.post('./userManagement', {"jsonStr": JSON.stringify(params)})
                 .then(function (result) {
                     if (result.code == "200") {
                         $scope.dataArr.list = result.retObj.list;
