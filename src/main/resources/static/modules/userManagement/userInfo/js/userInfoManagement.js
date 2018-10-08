@@ -126,7 +126,7 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
                 controller: 'createUserCtrl',
                 resolve: {
                     params: function () {
-                        return $scope.params;
+                        return $scope.rowItem;
                     }
                 }
             });
@@ -136,5 +136,46 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
                 $log.info('Modal dismissed at: ' + new Date());
             });
         };
+
+        //修改用户
+        $scope.updateUser = function () {
+            var modalInstance = $modal.open({
+                backdrop: false,
+                templateUrl: 'updateUser',
+                controller: 'updateUserCtrl',
+                resolve: {
+                    params: function () {
+                        return $scope.rowItem;
+                    }
+                }
+            });
+            modalInstance.result.then(function (selectedItem) {
+                query();
+            }, function (){
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+
+        //删除用户
+        $scope.deleteUser = function () {
+            var modalInstance = $modal.open({
+                backdrop: false,
+                templateUrl: 'deleteUser',
+                controller: 'deleteUserCtrl',
+                resolve: {
+                    params: function () {
+                        return $scope.rowItem;
+                    }
+                }
+            });
+            modalInstance.result.then(function (selectedItem) {
+                query();
+            }, function (){
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+
+
+
     }
 ]);

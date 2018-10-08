@@ -18,6 +18,8 @@ angular.module('app')
                                     return uiLoad.load([
                                         'modules/userManagement/userInfo/js/userInfoManagement.js',
                                         'modules/userManagement/userInfo/js/createUser.js',
+                                        'modules/userManagement/userInfo/js/updateUser.js',
+                                        'modules/userManagement/userInfo/js/deleteUser.js',
                                         'modules/userManagement/userInfo/css/userInfoManagement.css'
 
                                     ]);
