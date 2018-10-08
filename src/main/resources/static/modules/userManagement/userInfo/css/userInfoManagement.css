@@ -1,0 +1,50 @@
+/* 操作按钮 */
+.btn{
+    padding:4px 15px;
+    margin-top:0px;
+}
+.operate-btn{
+    color:#fff;
+    font-size:12px;
+    margin-right:0.5%;
+    /*padding: 2px 8px;
+    background-color:#4d91dd;
+    border: 1px solid #4d91dd;*/
+}
+/* 查询 重置按钮的颜色 */
+.operate-btn.on{
+    /*background: #4886bd;*/
+    background:#fff;
+    border: 1px solid #375d9e;
+    color: #293a47;
+}
+.btnpad {
+    padding: 3px 5px;
+}
+.btnfootpad {
+    padding: 3px 10px;
+}
+/* 功能按钮原来的颜色 */
+.operate-btn.space{
+    color:#293a47;
+    background-color:#fff;
+    border: 1px solid #375d9e;
+}
+.operate-btn.on{
+    background: rgb(255, 255, 255);
+    border: 1px solid #375d9e;
+}
+.operate-btn.on[disabled]{
+    background: transparent;
+    color: #6d757b;
+    font-size: 12px;
+    margin-right: 0.5%;
+    border: 1px solid #9ba4ab;
+    cursor: not-allowed;
+}
+.border_div{
+    /* border: 1px solid #375d9e; */
+    background-color:#fff;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}

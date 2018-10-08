@@ -12,12 +12,12 @@
             <form id="searchForm" name="searchForm" class="ng-pristine ng-valid">
                 <div class="col-md-12">
                     <div class="form-group common-group">
-                        <label  class="label-name">用户信息</label>
-                        <input type="text" class="form-control"  ng-model="orderName">
+                        <label  class="label-name">用户名称</label>
+                        <input type="text" class="form-control"  ng-model="userName">
                     </div>
                     <div class="form-group common-group">
                         <label class="label-name"></label>
-                        <button class="operate-btn on" ng-click="query(1,10)">
+                        <button class="operate-btn on" ng-click="queryForConditions()">
                             <i class="iconfont">&#xe65f;</i>
                             <span class="btn-name">查询</span>
                         </button>
@@ -33,23 +33,23 @@
             <div class="row no-padder m-n">
                 <div class="col-sm-12 m-t-xs m-b-xs no-padder" >
                     <div class="search-operate-btn">
-                        <button class="operate-btn on" ng-click="query(1,10)">
+                        <button class="operate-btn on" ng-click="query()">
                             <i class="iconfont">&#xe632;</i>
                             <span class="btn-name">刷新</span>
                         </button>
-                        <button class="operate-btn on" ng-click="apply()">
+                        <button class="operate-btn on" ng-click="createUser()">
                             <i class="iconfont">&#xe609;</i>
                             <span class="btn-name">新建</span>
                         </button>
-                        <button class="operate-btn on" ng-click="modify()">
+                        <button class="operate-btn on" ng-click="modifyUser()">
                             <i class="iconfont">&#xe65d;</i>
                             <span class="btn-name">修改</span>
                         </button>
-                        <button class="operate-btn on" ng-click="change()">
+                        <button class="operate-btn on" ng-click="deleteUser()">
                             <i class="iconfont">&#xe613;</i>
                             <span class="btn-name">删除</span>
                         </button>
-                        <button class="operate-btn on" ng-click="detail()">
+                        <button class="operate-btn on" ng-click="userDetail()">
                             <i class="iconfont">&#xe7db;</i>
                             <span class="btn-name">详情</span>
                         </button>
@@ -61,6 +61,15 @@
             </div>
         </div>
     </div>
+    <script type="text/ng-template" id="createUser">
+        <div ng-include="'modules/userManagement/userInfo/createUser.html'"></div>
+    </script>
+    <script type="text/ng-template" id="updateUser">
+        <div ng-include="'modules/userManagement/userInfo/updateUser.html'"></div>
+    </script>
+    <script type="text/ng-template" id="deleteUser">
+        <div ng-include="'modules/userManagement/userInfo/deleteUser.html'"></div>
+    </script>
 </div>
 </body>
 </html>

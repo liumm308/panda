@@ -16,7 +16,10 @@ angular.module('app')
                             deps: ['uiLoad',
                                 function (uiLoad) {
                                     return uiLoad.load([
-                                        'modules/userManagement/userInfo//js/userInfoManagement.js'
+                                        'modules/userManagement/userInfo/js/userInfoManagement.js',
+                                        'modules/userManagement/userInfo/js/createUser.js',
+                                        'modules/userManagement/userInfo/css/userInfoManagement.css'
+
                                     ]);
                                 }]
                         }
