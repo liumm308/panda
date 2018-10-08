@@ -239,6 +239,7 @@ span.hidden-sm.hidden-md:hover{
 .operate-btn.on{
 	background: rgb(255, 255, 255);
 	border: 1px solid #375d9e;
+	box-shadow: -6px -3px 5px 1px black;
 }
 .operate-btn i{
 	padding-right:5px
@@ -414,7 +415,7 @@ form{
 	border-top:1px solid #22ABD9;
 	background:#fff;
 	height: 50px;
-	line-height:42px;
+	/*line-height:42px;*/
 	padding: 1px 8px;
 }
 .modal-dialog{

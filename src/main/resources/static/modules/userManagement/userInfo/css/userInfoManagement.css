@@ -48,3 +48,11 @@
     padding-top: 5px;
     padding-bottom: 10px;
 }
+
+.modal-footer1{
+    border-top:1px solid #22ABD9;
+    background:#fff;
+    height: 50px;
+    /*line-height:42px;*/
+    padding: 1px 8px;
+}

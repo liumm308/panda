@@ -52,7 +52,7 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
         };
 
         $scope.pageFn = function (newPage, pageSize) {
-            $scope.query(newPage, pageSize);
+            query(newPage, pageSize);
         };
 
         $scope.userName = "";
@@ -61,8 +61,7 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
             var params = {
                 baseInfo: {
                     pageNum: newPage == undefined ? "1" : newPage,
-                    pageSize: pageSize == undefined ? "10" : pageSize,
-                    id: "1"
+                    pageSize: pageSize == undefined ? "10" : pageSize
                 },
                 method: "queryUser"
             };
