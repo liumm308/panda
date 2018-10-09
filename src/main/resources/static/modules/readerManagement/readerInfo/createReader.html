@@ -23,21 +23,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">读者类型：</label>
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">读者类型:</label>
                     <div class="col-md-6 col-sm-6 no-padder-sm">
-                        <select  class="form-control" name="text" ng-model="rpForm.readerType" style="display: inline-block;">
-                            <option value="1">大师级读者</option>
-                            <option value="2">学者级读者</option>
-                            <option value="3">高级读者</option>
-                            <option value="4">中级读者</option>
-                            <option value="5">初级读者</option>
+                        <select class="form-control"  name="text" ng-model="rpForm.readerType"
+                               style="display: inline-block;" ng-options="n as n.typeName for n in readerTypes" >
                         </select>
                     </div>
                     <span class="no-null">*</span>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">读者性别：</label>
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">读者性别:</label>
                     <div class="col-md-6 col-sm-6 no-padder-sm">
                         <select  class="form-control" name="text" ng-model="rpForm.readerSex" style="display: inline-block;">
                             <option value="男">男</option>

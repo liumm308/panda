@@ -17,13 +17,9 @@
                     </div>
                     <div class="form-group common-group">
                         <label  class="label-name">读者类型</label>
-                        <select  class="form-control" name="text" ng-model="readerType" style="display: inline-block; width: 170px">
+                        <select class="form-control"  name="text" ng-model="rpForm.readerType"
+                                style="display: inline-block; width: 170px" ng-options="n as n.typeName for n in readerTypes" >
                             <option value="">全部</option>
-                            <option value="1">大师级读者</option>
-                            <option value="2">学者级读者</option>
-                            <option value="3">高级读者</option>
-                            <option value="4">中级读者</option>
-                            <option value="5">初级读者</option>
                         </select>
                     </div>
                     <div class="form-group common-group">

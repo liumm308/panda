@@ -1,21 +1,5 @@
 'use strict';
 
-app.filter("readerTypeFilter", function () {
-    return function (input) {
-        if (input == "1") {
-            return input.replace("1",'大师级读者');
-        } else if(input == "2"){
-            return input.replace("2",'学者级读者');
-        } else if(input == "3"){
-            return input.replace("3",'高级读者');
-        } else if(input == "4"){
-            return input.replace("4",'中级读者');
-        } else if(input == "5"){
-            return input.replace("5",'初级读者');
-        }
-    }
-});
-
 
 app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log', '$http','i18nService','$timeout','$stateParams','service.RES','$state','ngDialog','ngTip',
     function ($rootScope,$scope, $modal, $log, $http, i18nService, $timeout, $stateParams, serviceRES,$state,ngDialog,ngTip) {
@@ -33,8 +17,7 @@ app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$l
             displayName: "读者名称"
         }, {
             field: "readerType",
-            displayName: "读者类型",
-            cellTemplate: '<div class="ui-grid-cell-contents ng-binding ng-scope">{{row.entity.readerType|readerTypeFilter}}</div>'
+            displayName: "读者类型"
         }, {
             field: "readerAge",
             displayName: "年龄"
@@ -93,13 +76,33 @@ app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$l
         };
         $scope.query();
 
-        /*重置搜索条件*/
-        $scope.reset = function () {
-            $scope.readerName = "";
-            $scope.readerType = "";
-            $scope.readerSex = "";
+        /*查询可选的读者类型*/
+        var getReaderTypes = function () {
+            var params = {
+                baseInfo: {
+                    "pageSize": "0",
+                    "pageNum": "0"
+                },
+                method: "queryReaderType"
+            };
+            $.post('./readerManagement', {"jsonStr": JSON.stringify(params)})
+                .then(function (result) {
+                    if (result.code == 200 && result.retObj.list != 0) {
+                        $scope.readerTypes = result.retObj.list;
+                    }
 
+                });
         };
+
+        getReaderTypes();
+
+        $scope.rpForm = {
+            readerType: {
+                typeName: "",
+                id: ""
+            }
+        };
+
 
         //条件查询
         $scope.queryForConditions = function (newPage, pageSize) {
@@ -107,7 +110,7 @@ app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$l
             var params = {
                 baseInfo: {
                     readerName: $scope.readerName,
-                    readerType: $scope.readerType == undefined?null:$scope.readerType,
+                    readerType: $scope.rpForm.readerType == undefined?null:$scope.rpForm.readerType.id,
                     readerSex:  $scope.readerSex == undefined?null:$scope.readerSex,
                     pageNum:    newPage == undefined ? "1" : newPage,
                     pageSize:   pageSize == undefined ? "10" : pageSize
@@ -130,6 +133,20 @@ app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$l
                     }
                     $scope.$apply();
                 });
+        };
+
+
+
+        /*重置搜索条件*/
+        $scope.reset = function () {
+            $scope.readerName = "";
+            $scope.readerSex = "";
+            $scope.rpForm = {
+                readerType: {
+                    typeName: "",
+                    id: ""
+                }
+            };
         };
 
 
