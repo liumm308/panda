@@ -46,7 +46,7 @@ public class BooksManagementSystemController {
 
 
     /**
-     * 图书管理
+     * 读者管理
      * */
     @RequestMapping(value = "/readerManagement", produces = { "application/json; charset=UTF-8" })
     public String readerManagement(@FormParam(value = "jsonStr") String jsonStr) {
@@ -67,6 +67,31 @@ public class BooksManagementSystemController {
         logger.info("readerManagement response :" + result);
         return result.toJSONString();
     }
+
+
+    /**
+     * 图书管理
+     * */
+    @RequestMapping(value = "/bookManagement", produces = { "application/json; charset=UTF-8" })
+    public String bookManagement(@FormParam(value = "jsonStr") String jsonStr) {
+
+        JSONObject result = null;
+        try{
+            logger.info("bookManagement request: " + JsonPluginsUtil.beanToJson(jsonStr));
+
+            JSONObject jsonObject = JSONObject.parseObject(jsonStr);
+            result = remoteTemplate.remote(jsonStr,jsonObject.getString("method"), JSONObject.class);
+        }catch (Exception e){
+
+            logger.error("图书管理失败！！！", e);
+            result.put("code","-1");
+            return result.toJSONString();
+        }
+
+        logger.info("bookManagement response :" + result);
+        return result.toJSONString();
+    }
+
 
 
 

@@ -1,23 +1,7 @@
 'use strict';
 
-app.filter("readerTypeFilter", function () {
-    return function (input) {
-        if (input == "1") {
-            return input.replace("1",'大师级读者');
-        } else if(input == "2"){
-            return input.replace("2",'学者级读者');
-        } else if(input == "3"){
-            return input.replace("3",'高级读者');
-        } else if(input == "4"){
-            return input.replace("4",'中级读者');
-        } else if(input == "5"){
-            return input.replace("5",'初级读者');
-        }
-    }
-});
 
-
-app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log', '$http','i18nService','$timeout','$stateParams','service.RES','$state','ngDialog','ngTip',
+app.controller('readerTypeManagementCtrl', ['$rootScope','$scope', '$modal', '$log', '$http','i18nService','$timeout','$stateParams','service.RES','$state','ngDialog','ngTip',
     function ($rootScope,$scope, $modal, $log, $http, i18nService, $timeout, $stateParams, serviceRES,$state,ngDialog,ngTip) {
         // 国际化；
         i18nService.setCurrentLang("zh-cn");
@@ -29,24 +13,14 @@ app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$l
         };
 
         $scope.gridOptions = [{
-            field: "readerName",
-            displayName: "读者名称"
-        }, {
-            field: "readerType",
-            displayName: "读者类型",
-            cellTemplate: '<div class="ui-grid-cell-contents ng-binding ng-scope">{{row.entity.readerType|readerTypeFilter}}</div>'
-        }, {
-            field: "readerAge",
-            displayName: "年龄"
-        }, {
-            field: "readerSex",
-            displayName: "性别"
-        }, {
-            field: "readerPhone",
-            displayName: "电话"
+            field: "typeName",
+            displayName: "类型名称"
         },{
-            field: "descriptive",
-            displayName: "备注"
+            field: "maxBorrowNum",
+            displayName: "最大借书数量"
+        },{
+            field: "maxBorrowLimit",
+            displayName: "最长借书天数"
         },{
             field: "createTime",
             displayName: "创建时间",
@@ -73,7 +47,7 @@ app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$l
                     pageNum: newPage == undefined ? "1" : newPage,
                     pageSize: pageSize == undefined ? "10" : pageSize
                 },
-                method: "queryReader"
+                method: "queryReaderType"
             };
             $.post('./readerManagement', {"jsonStr": JSON.stringify(params)})
                 .then(function (response) {
@@ -95,10 +69,7 @@ app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$l
 
         /*重置搜索条件*/
         $scope.reset = function () {
-            $scope.readerName = "";
-            $scope.readerType = "";
-            $scope.readerSex = "";
-
+            $scope.typeName = "";
         };
 
         //条件查询
@@ -106,13 +77,11 @@ app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$l
             console.log('条件查询');
             var params = {
                 baseInfo: {
-                    readerName: $scope.readerName,
-                    readerType: $scope.readerType == undefined?null:$scope.readerType,
-                    readerSex:  $scope.readerSex == undefined?null:$scope.readerSex,
+                    typeName: $scope.typeName,
                     pageNum:    newPage == undefined ? "1" : newPage,
                     pageSize:   pageSize == undefined ? "10" : pageSize
                 },
-                method: "queryReader"
+                method: "queryReaderType"
             };
             $.post('./readerManagement', {"jsonStr": JSON.stringify(params)})
                 .then(function (response) {
@@ -122,7 +91,7 @@ app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$l
                         $scope.dataArr.pageNum = response.retObj.pageNum;
                         $scope.dataArr.pageSize = response.retObj.pageSize;
                     } else {
-                        window.wxc.xcConfirm("读者查询错误！", window.wxc.xcConfirm.typeEnum.success);
+                        window.wxc.xcConfirm("读者类型查询错误！", window.wxc.xcConfirm.typeEnum.success);
                         $scope.dataArr.list = [];
                         $scope.dataArr.total = response.retObj.total;
                         $scope.dataArr.pageNum = response.retObj.pageNum;
@@ -133,12 +102,12 @@ app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$l
         };
 
 
-        //创建读者
-        $scope.createReader = function () {
+        //创建读者类型
+        $scope.createReaderType = function () {
             var modalInstance = $modal.open({
                 backdrop: false,
-                templateUrl: 'createReader',
-                controller: 'createReaderCtrl',
+                templateUrl: 'createReaderType',
+                controller: 'createReaderTypeCtrl',
                 resolve: {
                     params: function () {
                         return $scope.rowItem;
@@ -152,12 +121,12 @@ app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$l
             });
         };
 
-        //修改读者
-        $scope.updateReader = function () {
+        //修改读者类型
+        $scope.updateReaderType = function () {
             var modalInstance = $modal.open({
                 backdrop: false,
-                templateUrl: 'updateReader',
-                controller: 'updateReaderCtrl',
+                templateUrl: 'updateReaderType',
+                controller: 'updateReaderTypeCtrl',
                 resolve: {
                     params: function () {
                         return $scope.rowItem;
@@ -171,12 +140,12 @@ app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$l
             });
         };
 
-        //删除读者
-        $scope.deleteReader = function () {
+        //删除读者类型
+        $scope.deleteReaderType = function () {
             var modalInstance = $modal.open({
                 backdrop: false,
-                templateUrl: 'deleteReader',
-                controller: 'deleteReaderCtrl',
+                templateUrl: 'deleteReaderType',
+                controller: 'deleteReaderTypeCtrl',
                 resolve: {
                     params: function () {
                         return $scope.rowItem;
