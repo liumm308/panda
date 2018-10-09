@@ -1,19 +1,23 @@
 'use strict';
 
-app.filter("userTypeFilter", function () {
+app.filter("readerTypeFilter", function () {
     return function (input) {
         if (input == "1") {
-            return input.replace("1",'超级用户');
+            return input.replace("1",'大师级读者');
         } else if(input == "2"){
-            return input.replace("2",'部门用户');
+            return input.replace("2",'学者级读者');
         } else if(input == "3"){
-            return input.replace("3",'普通用户');
+            return input.replace("3",'高级读者');
+        } else if(input == "4"){
+            return input.replace("4",'中级读者');
+        } else if(input == "5"){
+            return input.replace("5",'初级读者');
         }
     }
 });
 
 
-app.controller('userInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log', '$http','i18nService','$timeout','$stateParams','service.RES','$state','ngDialog','ngTip',
+app.controller('readerInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log', '$http','i18nService','$timeout','$stateParams','service.RES','$state','ngDialog','ngTip',
     function ($rootScope,$scope, $modal, $log, $http, i18nService, $timeout, $stateParams, serviceRES,$state,ngDialog,ngTip) {
         // 国际化；
         i18nService.setCurrentLang("zh-cn");
@@ -25,19 +29,25 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
         };
 
         $scope.gridOptions = [{
-            field: "userName",
-            displayName: "用户名称"
+            field: "readerName",
+            displayName: "读者名称"
         }, {
-            field: "type",
-            displayName: "用户类型",
-            cellTemplate: '<div class="ui-grid-cell-contents ng-binding ng-scope">{{row.entity.type|userTypeFilter}}</div>'
+            field: "readerType",
+            displayName: "读者类型",
+            cellTemplate: '<div class="ui-grid-cell-contents ng-binding ng-scope">{{row.entity.readerType|readerTypeFilter}}</div>'
         }, {
-            field: "userPassword",
-            displayName: "用户密码"
+            field: "readerAge",
+            displayName: "年龄"
         }, {
-            field: "userCompany",
-            displayName: "部门"
+            field: "readerSex",
+            displayName: "性别"
         }, {
+            field: "readerPhone",
+            displayName: "电话"
+        },{
+            field: "descriptive",
+            displayName: "备注"
+        },{
             field: "createTime",
             displayName: "创建时间",
             cellTemplate: '<div class="ui-grid-cell-contents ng-binding ng-scope"' + ' title="{{row.entity.createTime}}">{{row.entity.createTime |date:"yyyy-MM-dd HH:mm:ss"}}</div>'
@@ -63,9 +73,9 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
                     pageNum: newPage == undefined ? "1" : newPage,
                     pageSize: pageSize == undefined ? "10" : pageSize
                 },
-                method: "queryUser"
+                method: "queryReader"
             };
-            $.post('./userManagement', {"jsonStr": JSON.stringify(params)})
+            $.post('./readerManagement', {"jsonStr": JSON.stringify(params)})
                 .then(function (response) {
                     if (response.code == 200) {
                         $scope.dataArr.list = response.retObj.list;
@@ -85,7 +95,10 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
 
         /*重置搜索条件*/
         $scope.reset = function () {
-            $scope.userName = "";
+            $scope.readerName = "";
+            $scope.readerType = "";
+            $scope.readerSex = "";
+
         };
 
         //条件查询
@@ -93,13 +106,15 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
             console.log('条件查询');
             var params = {
                 baseInfo: {
-                    userName: $scope.userName,
-                    pageNum: newPage == undefined ? "1" : newPage,
-                    pageSize: pageSize == undefined ? "10" : pageSize
+                    readerName: $scope.readerName,
+                    readerType: $scope.readerType == undefined?null:$scope.readerType,
+                    readerSex:  $scope.readerSex == undefined?null:$scope.readerSex,
+                    pageNum:    newPage == undefined ? "1" : newPage,
+                    pageSize:   pageSize == undefined ? "10" : pageSize
                 },
-                method: "queryUser"
+                method: "queryReader"
             };
-            $.post('./userManagement', {"jsonStr": JSON.stringify(params)})
+            $.post('./readerManagement', {"jsonStr": JSON.stringify(params)})
                 .then(function (response) {
                     if (response.code == 200) {
                         $scope.dataArr.list = response.retObj.list;
@@ -119,11 +134,11 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
 
 
         //创建用户
-        $scope.createUser = function () {
+        $scope.createReader = function () {
             var modalInstance = $modal.open({
                 backdrop: false,
-                templateUrl: 'createUser',
-                controller: 'createUserCtrl',
+                templateUrl: 'createReader',
+                controller: 'createReaderCtrl',
                 resolve: {
                     params: function () {
                         return $scope.rowItem;
@@ -138,11 +153,11 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
         };
 
         //修改用户
-        $scope.updateUser = function () {
+        $scope.updateReader = function () {
             var modalInstance = $modal.open({
                 backdrop: false,
-                templateUrl: 'updateUser',
-                controller: 'updateUserCtrl',
+                templateUrl: 'updateReader',
+                controller: 'updateReaderCtrl',
                 resolve: {
                     params: function () {
                         return $scope.rowItem;
@@ -157,11 +172,11 @@ app.controller('userInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
         };
 
         //删除用户
-        $scope.deleteUser = function () {
+        $scope.deleteReader = function () {
             var modalInstance = $modal.open({
                 backdrop: false,
-                templateUrl: 'deleteUser',
-                controller: 'deleteUserCtrl',
+                templateUrl: 'deleteReader',
+                controller: 'deleteReaderCtrl',
                 resolve: {
                     params: function () {
                         return $scope.rowItem;

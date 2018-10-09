@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态列表</title>
+</head>
+
+<body>
+<div class="pane" style="padding: 11px;">
+    <div class="panel-default">
+        <div class="row _swithch__board_heard_ search-box clear" >
+            <form id="searchForm" name="searchForm" class="ng-pristine ng-valid">
+                <div class="col-md-12">
+                    <div class="form-group common-group">
+                        <label  class="label-name">读者名称</label>
+                        <input type="text" class="form-control"  ng-model="readerName" style="width: 170px">
+                    </div>
+                    <div class="form-group common-group">
+                        <label  class="label-name">读者类型</label>
+                        <select  class="form-control" name="text" ng-model="readerType" style="display: inline-block; width: 170px">
+                            <option value="">全部</option>
+                            <option value="1">大师级读者</option>
+                            <option value="2">学者级读者</option>
+                            <option value="3">高级读者</option>
+                            <option value="4">中级读者</option>
+                            <option value="5">初级读者</option>
+                        </select>
+                    </div>
+                    <div class="form-group common-group">
+                        <label  class="label-name">读者性别</label>
+                        <select  class="form-control" name="text" ng-model="readerSex" style="display: inline-block; width: 170px">
+                            <option value="">全部</option>
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select>
+                    </div>
+                    <div class="form-group common-group">
+                        <label class="label-name"></label>
+                        <button class="operate-btn on" ng-click="queryForConditions()">
+                            <i class="iconfont">&#xe65f;</i>
+                            <span class="btn-name">查询</span>
+                        </button>
+                        <button class="operate-btn on" ng-click="reset()">
+                            <i class="iconfont">&#xe61d;</i>
+                            <span class="btn-name">重置</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="content-list">
+            <div class="row no-padder m-n">
+                <div class="col-sm-12 m-t-xs m-b-xs no-padder" >
+                    <div class="search-operate-btn">
+                        <button class="operate-btn on" ng-click="query()">
+                            <i class="iconfont">&#xe632;</i>
+                            <span class="btn-name">刷新</span>
+                        </button>
+                        <button class="operate-btn on" ng-click="createReader()">
+                            <i class="iconfont">&#xe609;</i>
+                            <span class="btn-name">新建</span>
+                        </button>
+                        <button class="operate-btn on" ng-click="updateReader()">
+                            <i class="iconfont">&#xe65d;</i>
+                            <span class="btn-name">修改</span>
+                        </button>
+                        <button class="operate-btn on" ng-click="deleteReader()">
+                            <i class="iconfont">&#xe613;</i>
+                            <span class="btn-name">删除</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-content">
+                <grid arr="dataArr" col-arr="gridOptions" call-fn="callFn" page-fn="pageFn"></grid>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="createReader">
+        <div ng-include="'modules/readerManagement/readerInfo/createReader.html'"></div>
+    </script>
+    <script type="text/ng-template" id="updateReader">
+        <div ng-include="'modules/readerManagement/readerInfo/updateReader.html'"></div>
+    </script>
+    <script type="text/ng-template" id="deleteReader">
+        <div ng-include="'modules/readerManagement/readerInfo/deleteReader.html'"></div>
+    </script>
+</div>
+</body>
+</html>

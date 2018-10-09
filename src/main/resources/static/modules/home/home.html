@@ -61,8 +61,8 @@
                             <div class="table-item" ng-repeat="item in myUndoList" ng-if="myUndoList.length >0 && noneUndoData == false">
                                 <ul class="clearfix">
                                     <li>{{item.serverName}}</li>
-                                    <li>{{item.serverType | workOrderType}}</li>
-                                    <li>{{item.status | processStatus}}</li>
+                                    <li>{{item.serverType}}</li>
+                                    <li>{{item.status}}</li>
                                     <li ng-click="toMyUndo(item)"><i class="handle-bar"></i></li>
                                 </ul>
                             </div>
@@ -95,8 +95,8 @@
                             <div class="table-item" ng-repeat="item in myCreateList" ng-if="myCreateList.length >0 && noneCreateData == false">
                                 <ul class="clearfix">
                                     <li style="width: 33.333%">{{item.name}}</li>
-                                    <li style="width: 33.333%">{{item.type | workOrderType}}</li>
-                                    <li style="width: 33.333%">{{item.status | processStatus}}</li>
+                                    <li style="width: 33.333%">{{item.type}}</li>
+                                    <li style="width: 33.333%">{{item.status}}</li>
                                     <!--<li ng-click="toMyCreate(item)"><i class="handle-bar"></i></li>-->
                                 </ul>
                             </div>

@@ -1,0 +1,98 @@
+<meta charset="utf-8" xmlns="http://www.w3.org/1999/html">
+<div style="background-color: white">
+
+    <div class="modal-header">
+        <button id="modelCancel" type="button" class="close"
+                ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">新建读者信息</h4>
+    </div>
+
+    <div class="modal-body">
+        <form  class="file-brief file-brief-show form-validation" name="updateForm" style="margin: 40px">
+            <div id="guest_div" style="height:100%;overflow: auto;">
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">读者名称:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <input type="text" class="form-control" ng-model="rpForm.readerName"
+                               placeholder="" required>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">读者类型：</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <select  class="form-control" name="text" ng-model="rpForm.readerType" style="display: inline-block;">
+                            <option value="1">大师级读者</option>
+                            <option value="2">学者级读者</option>
+                            <option value="3">高级读者</option>
+                            <option value="4">中级读者</option>
+                            <option value="5">初级读者</option>
+                        </select>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">读者性别：</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <select  class="form-control" name="text" ng-model="rpForm.readerSex" style="display: inline-block;">
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                        </select>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">读者年龄:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <input type="text" class="form-control guest-input" ng-model="rpForm.readerAge"
+                               placeholder="" required>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">读者电话:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <input type="text" class="form-control guest-input" ng-model="rpForm.readerPhone"
+                               placeholder="" required>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">备注:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                                 <textarea type="text" class="form-control" ng-model="rpForm.descriptive" placeholder="" required>
+                                 </textarea>
+                    </div>
+                </div>
+
+                <div ng-if="varif" style="text-align: center">
+                             <span style="color: red;position:relative" >
+                                    <span>*为必填项</span>
+                                </span>
+                </div>
+            </div>
+
+        </form>
+
+        <div class="modal-footer" style="position:relative;">
+            <button type="submit" class="operate-btn on"  ng-click="createReader()">创建</button>
+            <button type="button" class="operate-btn on" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(function(){
+        $(".style_select ul.dropdown-menu").css("overflow-x","hidden");
+        $(".btn.btn-blue.btn-fixed").css("bottom","30px")
+    })
+</script>

@@ -22,7 +22,7 @@ public class BooksManagementSystemController {
     private RestTemplate restTemplate;
 
     /**
-     * Image 项目操作
+     * 用户管理
      * */
     @RequestMapping(value = "/userManagement", produces = { "application/json; charset=UTF-8" })
     public String userManagement(@FormParam(value = "jsonStr") String jsonStr) {
@@ -43,6 +43,31 @@ public class BooksManagementSystemController {
         logger.info("userManagement response :" + result);
         return result.toJSONString();
     }
+
+
+    /**
+     * 图书管理
+     * */
+    @RequestMapping(value = "/readerManagement", produces = { "application/json; charset=UTF-8" })
+    public String readerManagement(@FormParam(value = "jsonStr") String jsonStr) {
+
+        JSONObject result = null;
+        try{
+            logger.info("readerManagement request: " + JsonPluginsUtil.beanToJson(jsonStr));
+
+            JSONObject jsonObject = JSONObject.parseObject(jsonStr);
+            result = remoteTemplate.remote(jsonStr,jsonObject.getString("method"), JSONObject.class);
+        }catch (Exception e){
+
+            logger.error("读者管理失败！！！", e);
+            result.put("code","-1");
+            return result.toJSONString();
+        }
+
+        logger.info("readerManagement response :" + result);
+        return result.toJSONString();
+    }
+
 
 
 }
