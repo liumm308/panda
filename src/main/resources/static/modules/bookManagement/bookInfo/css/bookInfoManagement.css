@@ -1,0 +1,361 @@
+
+
+
+
+
+
+.select-btn{
+    color:#375d9e;
+    font-size:12px;
+    margin-right:0.5%;
+    padding:8px 10px;
+    background-color:#fff;
+    border: 1px solid #375d9e;
+    /*padding: 2px 8px;
+    background-color:#4d91dd;*/
+
+}
+/* 查询 重置按钮的颜色 */
+.select-btn.on{
+    /*background: #4886bd;*/
+    background:#375d9e ;
+    border: 1px solid #375d9e;
+    color: #fff;
+    padding:8px 10px;
+}
+
+.information{
+    margin-left: 100px;
+    padding: 8px;
+}
+
+.information ul{
+    display: flex;
+    flex-direction: row;
+}
+
+.information ul li{
+    width: 50%;
+}
+
+
+
+.information textarea{
+    width:400px;
+    height:100px;
+    border: 0.8px solid #313131;
+
+}
+
+.threeLine li{
+    width:33%;
+}
+
+.baseFlex{
+    display: flex;
+    align-items: center;
+}
+
+.onlineBtn{
+    margin-left: 160px;
+}
+
+.onlineBtn button{
+    padding: 3px 15px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    background-color: white;
+    margin-right: 50px;
+}
+
+.content label{
+    width: 100%;
+    background-color: #375d9e;
+    color: #fff;
+    padding: 3px 5px;
+}
+
+.subContent{
+    padding:10px;
+}
+
+.table{
+    margin: 0px !important;
+    padding:0px !important;
+}
+.table ul li{
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+    text-align: center;
+    width: 16.7%;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table ul li:last-child{
+    border-right: 1px solid gray;
+}
+
+.tabContent{
+    margin:15px 100px;
+}
+
+.tabBtn{
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    margin-left:0px !important;
+}
+.border-b{
+    border-bottom: 1px solid gray;
+}
+
+.title-label{
+    margin-left: 10px;
+    width: 80px !important;
+    text-align: right;
+}
+
+.girdBtn{
+    border: 1px solid gray;
+    padding: 3px 8px;
+    border-radius: 5px;
+    color: #313131;
+}
+
+.bar1_div{
+    width: 100%;
+    border:1px solid #2b4f8e;
+}
+
+.chart-box-l{
+    width:49%;
+    height:282px;
+    float:left;
+    border:1px solid #2b4f8e;
+    margin-top: 5px;
+    margin-bottom: 10px
+}
+
+.chart-box-r{
+    width:49%;
+    height:282px;
+    float:right;
+    border:1px solid #2b4f8e;
+    margin-top: 5px
+}
+
+
+
+
+
+.home_div3{
+    min-width:49%;
+    height:282px;
+    float:left;
+    border:1px solid #2b4f8e;
+    margin-top: 5px;
+    margin-bottom: 10px
+}
+
+
+
+
+.home_div4{
+    min-width:100%;
+    height:800px;
+    float:left;
+    border:1px solid #2b4f8e;
+    margin-top: 5px;
+    margin-bottom: 10px
+}
+
+
+
+.home_div5{
+    min-width:100%;
+    height:432px;
+    float:left;
+    border:1px solid #2b4f8e;
+    margin-top: 5px;
+    margin-bottom: 10px
+}
+
+.home_div6{
+    min-width:29%;
+    height:382px;
+    float:left;
+    border:1px solid #2b4f8e;
+    margin-top: 25px;
+    margin-bottom: 10px
+}
+
+.home_div7{
+    min-width:69%;
+    height:382px;
+    float: right;
+    border:1px solid #2b4f8e;
+    margin-top: 25px;
+    margin-bottom: 10px
+}
+
+.div2{
+    background-color: #2b4f8e;
+    width: 100%;
+    height: 30px;
+    font-size: 14px;
+}
+
+.div2 span{
+    font-size:14px;
+    line-height:30px;
+    padding: 15px 0px 15px 15px;
+    vertical-align: middle;
+    color: white
+}
+
+
+
+.resource_statement {
+
+    width: 100%;
+    height: 90%;
+
+}
+
+
+.left_nav_phy_count{
+
+    width: 40%;
+
+    float: left;
+
+    background: #fff;
+
+}
+
+
+
+.resource_statement li{
+
+    width: 25%;
+    height: 100%;
+    float: left;
+
+
+
+}
+
+.resource_statement li p{
+
+    background: none;
+
+    margin: 0;
+
+    color: #fff;
+
+    text-align: center;
+
+    padding-top: 40%;
+
+    font-size: 16px;
+
+}
+
+.resource_statement li p.resource_num_count{
+
+    font-size: 42px;
+
+}
+
+.resource_num_count{
+
+    text-align:center;
+
+}
+
+
+.resource_app_title {
+    background: #2b4f8e !important;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    text-indent: 10px;
+    margin-bottom: 7px;
+}
+
+.resource_app_title span{
+    font-size:14px;
+    line-height:30px;
+    padding: 15px 0px 15px 15px;
+    vertical-align: middle;
+}
+
+
+#quota_container_cpu  .highcharts-color-0 {
+    fill: #7cb5ec;
+    stroke: #7cb5ec;
+}
+
+#quota_container_cpu  .highcharts-point {
+    fill: #7cb5ec;
+    stroke: #7cb5ec;
+}
+
+
+#quota_container_memory  .highcharts-color-0 {
+    fill: #ed0f55;
+    stroke: #ed0f55;
+}
+
+#quota_container_memory  .highcharts-point {
+    fill: #ed0f55;
+    stroke: #ed0f55;
+}
+
+#quota_container_disk  .highcharts-color-0 {
+    fill: #00bb00;
+    stroke: #00bb00;
+}
+
+#quota_container_disk  .highcharts-point {
+    fill: #00bb00;
+    stroke: #00bb00;
+}
+
+
+#quota_container_mun  .highcharts-color-0 {
+    fill: #a020f0;
+    stroke: #a020f0;
+}
+
+#quota_container_mun .highcharts-point{
+    fill: #a020f0;
+    stroke: #a020f0;
+}
+
+
+.form-group.common-group1 {
+    width: 35% !important;
+    display: inline-block !important;
+    margin-bottom: 5px !important;
+}
+
+/*
+#container_showOrder .highcharts-color-0{
+    fill: #1df016;
+    stroke: #1df016;
+}
+
+#container_showOrder .highcharts-point{
+    fill: #1df016;
+    stroke: #1df016;
+}
+
+#container_showOrder .highcharts-color-1{
+    fill: #fa8128;
+    stroke: #fa8128;
+}
+*/

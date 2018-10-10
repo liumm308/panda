@@ -1,0 +1,104 @@
+<meta charset="utf-8" xmlns="http://www.w3.org/1999/html">
+<div style="background-color: white">
+
+    <div class="modal-header">
+        <button id="modelCancel" type="button" class="close"
+                ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">新建图书类型</h4>
+    </div>
+
+    <div class="modal-body">
+        <form  class="file-brief file-brief-show form-validation" name="updateForm" style="margin: 40px">
+            <div id="guest_div" style="height:100%;overflow: auto;">
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">类型名称:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <select  class="form-control" name="text" ng-model="rpForm.bookTypeName" style="display: inline-block;">
+                            <option value="技能类">技能类</option>
+                            <option value="素养类">素养类</option>
+                            <option value="文史类">文史类</option>
+                            <option value="教育类">教育类</option>
+                            <option value="生活类">生活类</option>
+                            <option value="科技类">科技类</option>
+                            <option value="工作类">工作类</option>
+                        </select>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">学科属性：</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <select  class="form-control" name="text" ng-model="rpForm.bookTypeDiscipline" style="display: inline-block;">
+
+                            <option value="哲学">哲学</option>
+                            <option value="宗教">宗教</option>
+                            <option value="伦理">伦理</option>
+                            <option value="逻辑">逻辑</option>
+                            <option value="美学">美学</option>
+
+                            <option value="心理">心理</option>
+                            <option value="语言">语言</option>
+                            <option value="文学">文学</option>
+                            <option value="艺术">艺术</option>
+                            <option value="政治">政治</option>
+
+                            <option value="经济">经济</option>
+                            <option value="军事">军事</option>
+                            <option value="法律">法律</option>
+                            <option value="教育">教育</option>
+                            <option value="体育">体育</option>
+
+                            <option value="传媒">传媒</option>
+                            <option value="资讯">资讯</option>
+                            <option value="管理">管理</option>
+                            <option value="商贸">商贸</option>
+                            <option value="历史">历史</option>
+
+                            <option value="考古">考古</option>
+                            <option value="民族">民族</option>
+                            <option value="财金">财金</option>
+                            <option value="统计">统计</option>
+                            <option value="社会">社会</option>
+                        </select>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">是否国内：</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <select  class="form-control" name="text" ng-model="rpForm.bookTypeLocation" style="display: inline-block;">
+                            <option value="是">是</option>
+                            <option value="否">否</option>
+                        </select>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+
+                <div ng-if="varif" style="text-align: center">
+                             <span style="color: red;position:relative" >
+                                    <span>*为必填项</span>
+                                </span>
+                </div>
+            </div>
+
+        </form>
+
+        <div class="modal-footer" style="position:relative;">
+            <button type="submit" class="operate-btn on"  ng-click="createBookType()">创建</button>
+            <button type="button" class="operate-btn on" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(function(){
+        $(".style_select ul.dropdown-menu").css("overflow-x","hidden");
+        $(".btn.btn-blue.btn-fixed").css("bottom","30px")
+    })
+</script>

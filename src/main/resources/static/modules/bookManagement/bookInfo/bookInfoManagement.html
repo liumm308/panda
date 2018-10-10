@@ -1,0 +1,75 @@
+<meta charset="UTF-8" xmlns="http://www.w3.org/1999/html">
+<script type="text/ng-template" id="createBookType">
+    <div ng-include="'modules/bookManagement/bookType/createBookType.html'"></div>
+</script>
+<script type="text/ng-template" id="updateBookType">
+    <div ng-include="'modules/bookManagement/bookType/updateBookType.html'"></div>
+</script>
+<script type="text/ng-template" id="deleteBookType">
+    <div ng-include="'modules/bookManagement/bookType/deleteBookType.html'"></div>
+</script>
+
+<div class="pane">
+    <div class="panel panel-default" >
+
+        <div class="row _swithch__board_heard_ search-box clear" style="clear:both;">
+            <form role="form" class="ng-pristine ng-valid">
+                <div class="form-group common-group">
+                    <label  class="label-name">类型名称</label>
+                    <input type="text" class="form-control"  ng-model="typeName" style="width: 170px">
+                </div>
+                <div class="form-group common-group">
+                    <label class="label-name"></label>
+                    <button class="operate-btn on" ng-click="queryForConditions()">
+                        <i class="iconfont">&#xe65f;</i>
+                        <span class="btn-name">查询</span>
+                    </button>
+                    <button class="operate-btn on" ng-click="reset()">
+                        <i class="iconfont">&#xe61d;</i>
+                        <span class="btn-name">重置</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="content-list">
+            <div class="row no-padder m-n">
+                <div class="col-sm-12 m-t-xs m-b-xs no-padder" >
+                    <div class="search-operate-btn">
+                        <button class="operate-btn on" ng-click="query()">
+                            <i class="iconfont">&#xe632;</i>
+                            <span class="btn-name">刷新</span>
+                        </button>
+                        <button class="operate-btn on" ng-click="createBookType()">
+                            <i class="iconfont">&#xe609;</i>
+                            <span class="btn-name">新建</span>
+                        </button>
+                        <button class="operate-btn on" ng-click="updateBookType()">
+                            <i class="iconfont">&#xe65d;</i>
+                            <span class="btn-name">修改</span>
+                        </button>
+                        <button class="operate-btn on" ng-click="deleteBookType()">
+                            <i class="iconfont">&#xe613;</i>
+                            <span class="btn-name">删除</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!--图书类型-->
+                <div  class="home_div6">
+                    <div class="div2" >
+                        <span  class=".div2 span">图书类型</span>
+                    </div>
+                    <div id="container_bookType" style="padding-top:20px;width: 90%;height: 85%"></div>
+                </div>
+
+                <!--新增图书类型-->
+                <div  class="home_div7">
+                    <div class="div2" >
+                        <span class=".div2 span">图书类型详情</span>
+                    </div>
+                    <div id="container_bookTypeDetail" style="padding-top:20px;width: 90%;height: 85%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
