@@ -1,23 +1,43 @@
 <meta charset="UTF-8" xmlns="http://www.w3.org/1999/html">
-<script type="text/ng-template" id="createBookType">
-    <div ng-include="'modules/bookManagement/bookType/createBookType.html'"></div>
+<script type="text/ng-template" id="insertBook">
+    <div ng-include="'modules/bookManagement/bookInfo/insertBook.html'"></div>
 </script>
-<script type="text/ng-template" id="updateBookType">
-    <div ng-include="'modules/bookManagement/bookType/updateBookType.html'"></div>
-</script>
-<script type="text/ng-template" id="deleteBookType">
-    <div ng-include="'modules/bookManagement/bookType/deleteBookType.html'"></div>
+<script type="text/ng-template" id="deleteBook">
+    <div ng-include="'modules/bookManagement/bookInfo/deleteBook.html'"></div>
 </script>
 
 <div class="pane">
     <div class="panel panel-default" >
 
+        <!--图书类型-->
+        <div  class="home_div6">
+            <div class="div2" >
+                <span  class=".div2 span">图书类型</span>
+            </div>
+            <div id="container_bookType" style="padding-top:20px;width: 90%;height: 85%"></div>
+        </div>
+        <!--新增图书类型-->
+        <div  class="home_div7">
+            <div class="div2" >
+                <span class=".div2 span">图书类型详情</span>
+            </div>
+            <div id="container_bookTypeDetail" style="padding-top:20px;width: 90%;height: 85%"></div>
+        </div>
+
         <div class="row _swithch__board_heard_ search-box clear" style="clear:both;">
             <form role="form" class="ng-pristine ng-valid">
                 <div class="form-group common-group">
-                    <label  class="label-name">类型名称</label>
-                    <input type="text" class="form-control"  ng-model="typeName" style="width: 170px">
+                    <label  class="label-name">图书名称</label>
+                    <input type="text" class="form-control"  ng-model="bookName" style="width: 170px">
                 </div>
+                <div class="form-group common-group">
+                    <label  class="label-name">图书类型</label>
+                    <select class="form-control"  name="text" ng-model="rpForm.bookType"
+                            style="display: inline-block; width: 170px" ng-options="n as n.bookTypeName for n in bookTypes" >
+                        <option value="">全部</option>
+                    </select>
+                </div>
+
                 <div class="form-group common-group">
                     <label class="label-name"></label>
                     <button class="operate-btn on" ng-click="queryForConditions()">
@@ -39,36 +59,27 @@
                             <i class="iconfont">&#xe632;</i>
                             <span class="btn-name">刷新</span>
                         </button>
-                        <button class="operate-btn on" ng-click="createBookType()">
+                        <button class="operate-btn on" ng-click="insertBook()">
                             <i class="iconfont">&#xe609;</i>
-                            <span class="btn-name">新建</span>
+                            <span class="btn-name">录入</span>
                         </button>
-                        <button class="operate-btn on" ng-click="updateBookType()">
-                            <i class="iconfont">&#xe65d;</i>
-                            <span class="btn-name">修改</span>
+                        <button class="operate-btn on" ng-click="upBook()">
+                            <i class="iconfont">&#xe609;</i>
+                            <span class="btn-name">上架</span>
                         </button>
-                        <button class="operate-btn on" ng-click="deleteBookType()">
+                        <button class="operate-btn on" ng-click="downBook()">
+                            <i class="iconfont">&#xe609;</i>
+                            <span class="btn-name">下架</span>
+                        </button>
+                        <button class="operate-btn on" ng-click="deleteBook()">
                             <i class="iconfont">&#xe613;</i>
                             <span class="btn-name">删除</span>
                         </button>
                     </div>
                 </div>
-
-                <!--图书类型-->
-                <div  class="home_div6">
-                    <div class="div2" >
-                        <span  class=".div2 span">图书类型</span>
-                    </div>
-                    <div id="container_bookType" style="padding-top:20px;width: 90%;height: 85%"></div>
-                </div>
-
-                <!--新增图书类型-->
-                <div  class="home_div7">
-                    <div class="div2" >
-                        <span class=".div2 span">图书类型详情</span>
-                    </div>
-                    <div id="container_bookTypeDetail" style="padding-top:20px;width: 90%;height: 85%"></div>
-                </div>
+            </div>
+            <div class="grid-content">
+                <grid arr="dataArr" col-arr="gridOptions" call-fn="callFn" page-fn="pageFn"></grid>
             </div>
         </div>
     </div>

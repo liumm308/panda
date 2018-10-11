@@ -1,10 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<meta charset="utf-8" xmlns="http://www.w3.org/1999/html">
+<div style="background-color: white">
 
-</body>
-</html>
+    <div class="modal-header">
+        <button id="modelCancel" type="button" class="close"
+                ng-click="cancel()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">录入图书信息</h4>
+    </div>
+
+    <div class="modal-body">
+        <form  class="file-brief file-brief-show form-validation" name="updateForm" style="margin: 40px">
+            <div id="guest_div" style="height:100%;overflow: auto;">
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">图书ISBN编号:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <input type="text" class="form-control" ng-model="rpForm.isbn"
+                               placeholder="" required>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">图书名称:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <input type="text" class="form-control" ng-model="rpForm.bookName"
+                               placeholder="" required>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">图书类型:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <select class="form-control"  name="text" ng-model="rpForm.bookType"
+                                style="display: inline-block;" ng-options="n as n.bookTypeName for n in bookTypes" >
+                            <option value="">未知</option>
+                        </select>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">作者:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <input type="text" class="form-control" ng-model="rpForm.author"
+                               placeholder="" required>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">出版社:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <input type="text" class="form-control" ng-model="rpForm.publish"
+                               placeholder="" required>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">出版时间:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <input type="text" class="form-control" id="PublishDate" ng-click="Time.showPublishDate()" ng-model="rpForm.publishDate" />
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">出版次数:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <input type="text" class="form-control" ng-model="rpForm.publishNum"
+                               placeholder="" required>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">上架时间:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <input type="text" class="form-control" id="UpDate" ng-click="Time.showUpDate()" ng-model="rpForm.upTime" />
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">下架时间:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <input type="text" class="form-control" id="DownDate" ng-click="Time.showDownDate()" ng-model="rpForm.downTime" />
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">图书单价:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <input type="text" class="form-control guest-input" ng-model="rpForm.unitPrice"
+                               placeholder="" required>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div ng-if="varif" style="text-align: center">
+                             <span style="color: red;position:relative" >
+                                    <span>*为必填项</span>
+                                </span>
+                </div>
+            </div>
+
+        </form>
+
+        <div class="modal-footer" style="position:relative;">
+            <button type="submit" class="operate-btn on"  ng-click="insertBook()">创建</button>
+            <button type="button" class="operate-btn on" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(function(){
+        $(".style_select ul.dropdown-menu").css("overflow-x","hidden");
+        $(".btn.btn-blue.btn-fixed").css("bottom","30px")
+    })
+</script>
