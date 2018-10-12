@@ -10,6 +10,17 @@ app.controller('insertBookCtrl', ['$rootScope','$scope', '$log','$modal','$http'
 
         $scope.rpForm={};
 
+        $scope.rpForm = {
+            bookType: {
+                bookTypeName: "",
+                bookTypeId: ""
+            },
+            bookTypeD: {
+                bookTypeDiscipline : "",
+                bookTypeDisciplineId : ""
+            }
+        };
+
         /*查询可选的图书类型*/
         var getBookTypes = function () {
             var params = {
@@ -30,11 +41,23 @@ app.controller('insertBookCtrl', ['$rootScope','$scope', '$log','$modal','$http'
 
         getBookTypes();
 
-        $scope.rpForm = {
-            bookType: {
-                bookTypeName: "",
-                bookTypeId: ""
-            }
+        /*查询可选的图书类型*/
+        $scope.getbookTypeDisciplines = function () {
+            var params = {
+                baseInfo: {
+                    "pageSize": "0",
+                    "pageNum": "0",
+                     bookTypeId: $scope.rpForm.bookType.bookTypeId
+                },
+                method: "queryBookType"
+            };
+            $.post('./bookManagement', {"jsonStr": JSON.stringify(params)})
+                .then(function (result) {
+                    if (result.code == 200 && result.retObj.list != 0) {
+                        $scope.bookTypeDisciplines = result.retObj.list;
+                    }
+
+                });
         };
 
 
@@ -134,16 +157,17 @@ app.controller('insertBookCtrl', ['$rootScope','$scope', '$log','$modal','$http'
         $scope.insertBook = function () {
             var params = {
                 baseInfo:{
-                    isbn        :       $scope.rpForm.isbn,
-                    bookName    :       $scope.rpForm.bookName,
-                    typeId      :       $scope.rpForm.bookType.bookTypeId,
-                    author      :       $scope.rpForm.author,
-                    publish     :       $scope.rpForm.publish,
-                    publishDate :       timeTransformation($scope.rpForm.publishDate),
-                    publishNum  :       $scope.rpForm.publishNum,
-                    unitPrice   :       $scope.rpForm.unitPrice,
-                    upTime      :       timeTransformation($scope.rpForm.upTime),
-                    downTime    :       timeTransformation($scope.rpForm.downTime)
+                    isbn                    :       $scope.rpForm.isbn,
+                    bookName                :       $scope.rpForm.bookName,
+                    typeId                  :       $scope.rpForm.bookType.bookTypeId,
+                    bookTypeDisciplineId    :       $scope.rpForm.bookTypeD.bookTypeDisciplineId,
+                    author                  :       $scope.rpForm.author,
+                    publish                 :       $scope.rpForm.publish,
+                    publishDate             :       timeTransformation($scope.rpForm.publishDate),
+                    publishNum              :       $scope.rpForm.publishNum,
+                    unitPrice               :       $scope.rpForm.unitPrice,
+                    upTime                  :       timeTransformation($scope.rpForm.upTime),
+                    downTime                :       timeTransformation($scope.rpForm.downTime)
                 },
                 method:"insertBook"
             };

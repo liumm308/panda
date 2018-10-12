@@ -34,8 +34,19 @@
                 <div class="form-group">
                     <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">图书类型:</label>
                     <div class="col-md-6 col-sm-6 no-padder-sm">
-                        <select class="form-control"  name="text" ng-model="rpForm.bookType"
+                        <select class="form-control"  name="text" ng-model="rpForm.bookType" ng-change="getbookTypeDisciplines()"
                                 style="display: inline-block;" ng-options="n as n.bookTypeName for n in bookTypes" >
+                            <option value="">未知</option>
+                        </select>
+                    </div>
+                    <span class="no-null">*</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-offset-1 col-sm-offset-1 col-md-3 col-sm-3  control-label">学科属性:</label>
+                    <div class="col-md-6 col-sm-6 no-padder-sm">
+                        <select class="form-control"  name="text" ng-model="rpForm.bookTypeD"
+                                style="display: inline-block;" ng-options="n as n.bookTypeDiscipline for n in bookTypeDisciplines" >
                             <option value="">未知</option>
                         </select>
                     </div>

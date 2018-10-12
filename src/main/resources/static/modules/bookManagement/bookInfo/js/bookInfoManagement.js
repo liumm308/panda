@@ -22,8 +22,11 @@ app.controller('bookInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
             field: "bookName",
             displayName: "图书名称"
         }, {
-            field: "bookTypeDiscipline",
+            field: "bookTypeName",
             displayName: "图书类型"
+        },{
+            field: "bookTypeDiscipline",
+            displayName: "学科属性"
         }, {
             field: "author",
             displayName: "作者"
@@ -176,7 +179,7 @@ app.controller('bookInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
             });
         };
 
-        //删除读者
+        //删除图书
         $scope.deleteBook = function () {
             var modalInstance = $modal.open({
                 backdrop: false,
@@ -194,6 +197,76 @@ app.controller('bookInfoManagementCtrl', ['$rootScope','$scope', '$modal', '$log
                 $log.info('Modal dismissed at: ' + new Date());
             });
         };
+
+        /*查询可选的图书类型*/
+        var getBookNumByTypes = function () {
+            var params = {
+                baseInfo: {
+                    "pageSize": "0",
+                    "pageNum": "0"
+                },
+                method: "queryBookNumByType"
+            };
+            $.post('./bookManagement', {"jsonStr": JSON.stringify(params)})
+                .then(function (result) {
+                    if (result.code == 200 && result.retObj.list != 0) {
+                        $scope.BookNumByTypes = result.retObj.list;
+                        var typeNames = [];
+                        var bookNums = [];
+                        $scope.BookNumByTypes.forEach(function (item) {
+                            typeNames.push(item.bookTypeName);
+                            bookNums.push(item.numTypeOfBooks);
+                        });
+
+                        showChartsBookNumByType(typeNames, bookNums);
+
+                    }
+
+                });
+        };
+
+        getBookNumByTypes();
+
+
+        var showChartsBookNumByType = function(typeNames, bookNums){
+            Highcharts.chart('container_bookType', {
+                exporting: {
+                    enabled: false
+                },
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'pie',
+                    options3d: {
+                        enabled: true,
+                        alpha: 45
+                    }
+                },
+                title: {
+                    text: '图书类型'
+                },
+                plotOptions: {
+                    pie: {
+                        innerSize: 100,
+                        depth: 45
+                    }
+                },
+                series: [{
+                    name: '图书数量',
+                    data: (function() {
+                        var temp_data  = [];
+                        for (var i=0; i<bookNums.length; i++)
+                        {
+                            var arr = [typeNames[i], bookNums[i]];
+                            temp_data.push(arr);
+                        }
+                        return temp_data;
+                    })()
+                }]
+            });
+        };
+
 
     }
 ]);
